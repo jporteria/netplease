@@ -11,7 +11,12 @@ export default function Movies(props){
                 {props.movieList.slice(0, 6).map((movie, id) =>(
                     <div className="movie--box"
                     key={id}>
-                        <div className="movie--image"><img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/></div>
+                        <div className="movie--image">
+                            <img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+                            <div className="movie--summary">
+                                <p>{movie.overview}</p>
+                            </div>
+                        </div>
                         <p className="movie--name">{movie.original_title}</p>
                     </div>
                 ))}
@@ -25,7 +30,12 @@ export default function Movies(props){
                 {props.upcomingList.slice(0, 6).map((movie, id) =>(
                     <div className="movie--box"
                     key={id}>
-                        <div className="movie--image"><img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/></div>
+                        <div className="movie--image">
+                            <img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+                            <div className="movie--summary">
+                                <p>{movie.overview}</p>
+                            </div>
+                        </div>
                         <p className="movie--name">{movie.original_title}</p>
                     </div>
                 ))}
@@ -39,7 +49,12 @@ export default function Movies(props){
                 {props.tvList.slice(0, 6).map((movie, id) =>(
                     <div className="movie--box"
                     key={id}>
-                        <div className="movie--image"><img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/></div>
+                        <div className="movie--image">
+                            <img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+                            <div className="movie--summary">
+                                <p>{movie.overview}</p>
+                            </div>
+                        </div>
                         <p className="movie--name">{movie.name}</p>
                     </div>
                 ))}
@@ -53,7 +68,12 @@ export default function Movies(props){
                 {props.topRatedTvList.slice(0, 6).map((movie, id) =>(
                     <div className="movie--box"
                     key={id}>
-                        <div className="movie--image"><img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/></div>
+                        <div className="movie--image">
+                            <img width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+                            <div className="movie--summary">
+                                <p>{movie.overview}</p>
+                            </div>
+                        </div>
                         <p className="movie--name">{movie.name}</p>
                     </div>
                 ))}
