@@ -39,8 +39,6 @@ export default function App() {
         getTopRatedTv()
     },[])
 
-  console.log(movieList)
-
   return (
     <div>
       <Header />

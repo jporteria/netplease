@@ -1,11 +1,22 @@
 export default function Header(){
+
+    function GoToHomePage()
+        {
+            window.location = '/';   
+        }
+
     return(
         <div className="header">
-            <div>My Movie App</div>
+            <div className="site--name"
+                onClick={GoToHomePage}
+            >
+                <img className="header--logo" src="../image/jc.jpg" />Netplease
+            </div>
             <div className="header--movies">
-                <p>New released</p>
-                <p>Popular movies</p>
-                <p>Most watched</p>
+                <p>Popular Movies</p>
+                <p>Upcoming Movies</p>
+                <p>TV Series</p>
+                <p>Top Rated TV Series</p>
             </div>
             <div>Profile</div>
         </div>

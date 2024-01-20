@@ -17,7 +17,7 @@ export default function Preview(){
 
     return(
             <div className="preview--box">
-                {trendingList.slice(3, 4).map((movie, id) =>(
+                {trendingList.slice(4, 5).map((movie, id) =>(
                     <img width="100%" height="100%" key={id} src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} />
                 ))}
             </div>

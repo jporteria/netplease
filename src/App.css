@@ -4,7 +4,9 @@ body{
     align-items: center;
     height: 2000px;
     color: white;
-    font-family: "Bungee Spice", serif;
+    font-family: "Merriweather", serif;
+    padding: 0;
+    margin: 0;
     /*overflow: hidden;*/
 }
 
@@ -15,6 +17,20 @@ body{
     align-items: center;
     border: 1px solid green;
     width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.6);
+}
+.header--logo{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+.site--name{
+    font: 2rem "Bungee Spice", sans-serif;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
 }
 .header--movies{
     display: flex;
@@ -25,19 +41,19 @@ body{
 
 .preview--box{
     height: 750px;
-    border: 2px solid blue;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .movie--selection{
-    border: 1px solid orange;
     margin: 20px 20px;
 }
-.movie--header{
-    border: 1px solid purple;
+.movie--header{ 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font: 1.3rem "Merriweather", sans-serif;
+    font-weight: bold;
 }
 .movie--array{
     display: grid;
@@ -71,7 +87,6 @@ body{
 }
 
 .movie--box{
-    border: 1px solid cyan;
     height: 320px;
     width: 190px;
     text-align: center;
@@ -82,8 +97,12 @@ body{
 .movie--image{
     height: 270px;
     width: 100%;
-    border: 1px solid yellow;
     position: relative;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.movie--poster{
+    border-radius: 15px;
 }
 .movie--summary{
     width: 100%;
@@ -101,6 +120,7 @@ body{
     font-family: "sans-serif", serif;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-radius: 15px;
 }
 .movie--summary > p{
     display: -webkit-box;
@@ -113,5 +133,10 @@ body{
     opacity: 1;
 }
 .movie--name{
-    font-size: .7rem;
+    font: .8rem "merriweather", sans-serif;
+    font-weight: bold;
+}
+.seeAll{
+    font-size: 1rem;
+    text-decoration: underline;
 }
