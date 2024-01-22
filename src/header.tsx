@@ -19,16 +19,20 @@ export default function Header(props){
                 <p>Top Rated TV Series</p>
                 <div className="header--search">
                     <input 
-                        type="text" 
+                        onFocus={props.onFocus}
+                        onBlur={props.onBlur}
+                        type="search"
+                        placeholder="Search"
                         className="searchField"
                         onChange={props.handleChange}
                         value={props.searchText.title}
+                        autoFocus required
                     />
-                    <button 
+                    {/* <button 
                         className="searchButton" 
                         style={{backgroundImage:"url('../image/search.png')", 
                         backgroundSize: "cover"}}>  
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="header--user">

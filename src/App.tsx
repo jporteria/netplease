@@ -2,6 +2,7 @@ import './App.css'
 import Header from './header.tsx'
 import Preview from './preview.tsx'
 import Movies from './movies.tsx'
+import Searched from './searched.tsx'
 import React from 'react'
 
 export default function App() {
@@ -56,12 +57,21 @@ export default function App() {
         console.log(searchText.title)
     }
 
+  const [focused, setFocused] = React.useState(false)
+  const onFocus = () => setFocused(true)
+  const onBlur = () => setFocused(false)
 
   return (
     <div>
       <Header 
         handleChange={handleChange}
         searchText={searchText}
+        onFocus={onFocus}
+        onBlur={onBlur}
+      />
+      <Searched 
+        searchedMovie={searchedMovie}
+        focused={focused}
       />
       <Preview />
       <Movies
