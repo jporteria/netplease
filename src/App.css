@@ -9,7 +9,6 @@ body{
     margin: 0;
     /*overflow: hidden;*/
 }
-
 .header{
     position: fixed;
     display: flex;
@@ -17,7 +16,7 @@ body{
     align-items: center;
     width: 100%;
     height: 60px;
-    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)) ;
+    background: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,.9), rgba(0,0,0,0)) ;
     z-index: 10;
 }
 .header--logo{
@@ -34,9 +33,22 @@ body{
 }
 .header--movies{
     display: flex;
-}
-.header--movies > p{
+}   
+.header--movies > a{
     margin: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+a.active{
+    text-shadow: 0 0 20px #ffffff;
+    font-size: 1.1rem;
+}
+.allMoviePage{
+    padding-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .header--search{
     display: flex;

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Movies(props){
 
 
@@ -5,7 +7,7 @@ export default function Movies(props){
         <div className="movie--selection">
             <div className="movie--header">
                 <div>Popular Movies</div>
-                <a className="seeAll">See all</a>
+                <Link to="/popularMovies">See all</Link>
             </div>
             <div className="movie--array">
                 {props.movieList.slice(0, 6).map((movie, id) =>(
@@ -24,7 +26,7 @@ export default function Movies(props){
             
             <div className="movie--header">
                 <div>Upcoming Movies</div>
-                <a className="seeAll">See all</a>
+                <Link to="/upcomingMovies">See all</Link>
             </div>
             <div className="movie--array">
                 {props.upcomingList.slice(0, 6).map((movie, id) =>(
@@ -43,7 +45,7 @@ export default function Movies(props){
 
             <div className="movie--header">
                 <div>TV Series</div>
-                <a className="seeAll">See all</a>
+                <Link to="/tvSeries">See all</Link>
             </div>
             <div className="movie--array">
                 {props.tvList.slice(0, 6).map((movie, id) =>(
@@ -62,7 +64,7 @@ export default function Movies(props){
 
             <div className="movie--header">
                 <div>Top Rated TV Series</div>
-                <a className="seeAll">See all</a>
+                <Link to="/topRatedTvSeries">See all</Link>
             </div>
             <div className="movie--array">
                 {props.topRatedTvList.slice(0, 6).map((movie, id) =>(

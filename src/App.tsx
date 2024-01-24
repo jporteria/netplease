@@ -1,18 +1,19 @@
 import './App.css'
-import Header from './header.tsx'
-import Preview from './preview.tsx'
-import Movies from './movies.tsx'
-import Searched from './searched.tsx'
+import Home from './pages/home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import PopularMovies from './pages/popularMovies'
+import UpcomingMovies from './pages/upcomingMovies'
+import Header from './header'
 import React from 'react'
+import TvSeries from './pages/tvSeries'
+import TopRatedTvSeries from './pages/topRatedTv'
 
 export default function App() {
   
-  const [movieList, setMovieList] = React.useState([])
-  const [upcomingList, setUpcomingList] = React.useState([])
-  const [tvList, setTvList] = React.useState([])
-  const [topRatedTvList, setTopRatedTvList] = React.useState([])
-  const [searchedMovie, setSearchedMovie] = React.useState([])
-  const [searchText, setSearchText] = React.useState({title:""})
+    const [movieList, setMovieList] = React.useState([])
+    const [upcomingList, setUpcomingList] = React.useState([])
+    const [tvList, setTvList] = React.useState([])
+    const [topRatedTvList, setTopRatedTvList] = React.useState([])
   
   const getMovie = () => {
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=649f645abf4721a3027659369cc67c24')
@@ -34,11 +35,6 @@ export default function App() {
     .then(response => response.json())
     .then(data => setTopRatedTvList(data.results))
   }
-  const getSearchedMovie = () => {
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchText.title}&api_key=649f645abf4721a3027659369cc67c24`)
-    .then(response => response.json())
-    .then(data => setSearchedMovie(data.results))
-  }
 
   React.useEffect(() => {
     getMovie()
@@ -47,41 +43,23 @@ export default function App() {
     getTopRatedTv()
     },[])
 
-    function handleChange(event){
-      const { value } = event.target
-      setSearchText(prevSearch => ({
-        ...prevSearch,
-        title: value
-      }))
-        getSearchedMovie()
-        console.log(searchText.title)
-    }
-
-  const [focused, setFocused] = React.useState(false)
-  const onFocus = () => setFocused(true)
-  const onBlur = () => setFocused(false)
-
   return (
-    <div>
-      <Header 
-        handleChange={handleChange}
-        searchText={searchText}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      />
-      <Searched 
-        searchedMovie={searchedMovie}
-        focused={focused}
-      />
-      <Preview />
-      <Movies
-        movieList={movieList}
-        upcomingList={upcomingList}
-        tvList={tvList}
-        topRatedTvList={topRatedTvList}
-      />
-    
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path='/' element={<Home 
+            movieList={movieList}
+            upcomingList={upcomingList}
+            tvList={tvList}
+            topRatedTvList={topRatedTvList}
+          />} />
+          <Route path='/popularMovies' element={<PopularMovies movieList={movieList}/>} />
+          <Route path='/upcomingMovies' element={<UpcomingMovies upcomingList={upcomingList}/>} />
+          <Route path='/tvSeries' element={<TvSeries tvList={tvList}/>} />
+          <Route path='/topRatedTvSeries' element={<TopRatedTvSeries topRatedTvList={topRatedTvList}/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
