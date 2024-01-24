@@ -2,7 +2,6 @@ body{
     position: relative;
     background-color: rgb(37, 34, 34);
     align-items: center;
-    height: 2000px;
     color: white;
     font-family: "Merriweather", serif;
     padding: 0;
@@ -76,10 +75,23 @@ a.active{
     margin-left: 3px;
 }
 .preview--box{
-    height: 750px;
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    padding-bottom: 20px;
+}
+.preview--title{
+    position: absolute;
+    display: flex;
+    bottom: 120px;
+    left: 50px;
+    height: 80px;
+    width: 50%;
+    align-items: center;
+    font: bold 3rem "Merriweather", serif;
+    text-shadow: 0 0 10px black;
 }
 .movie--selection{
     margin: 20px 20px;
