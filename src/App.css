@@ -217,6 +217,7 @@ a.active{
 .movie--name{
     font: .8rem "merriweather", sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 .seeAll{
     font-size: 1rem;

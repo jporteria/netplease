@@ -1,7 +1,6 @@
 import React from 'react'
+import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
-
-//import { Fade, Zoom, Slide } from 'react-slideshow-image'
 
 export default function Preview(){
         const [trendingList, setTrendingList] = React.useState([])
@@ -14,10 +13,13 @@ export default function Preview(){
         React.useEffect(() => {
                 getTrending()
                 },[])
+        
+        // const slideImage = [{trendingList}]
+
 
     return(
             <div className="preview--box">
-                {trendingList.slice(0, 1).map((movie, id) =>(
+                {trendingList.slice(0,1).map((movie, id) =>(
                         <div>
                                 <img width="100%" height="100%" key={id} src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} />
                                 <h1 className="preview--title">{movie.original_title}</h1>

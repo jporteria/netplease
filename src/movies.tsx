@@ -1,7 +1,15 @@
+import React from "react"
 import { Link } from "react-router-dom"
 
 export default function Movies(props){
+    
+    const [selectedMovie, setSelectedMovie] = React.useState([])
 
+    function movieClicked(value) {
+        // window.location = '/movieDetails';  
+        setSelectedMovie(value)
+        console.log(selectedMovie)
+    }
 
     return(
         <div className="movie--selection">
@@ -10,9 +18,10 @@ export default function Movies(props){
                 <Link to="/popularMovies">See all</Link>
             </div>
             <div className="movie--array">
-                {props.movieList.slice(0, 6).map((movie, id) =>(
+                {props.movieList.slice(0, 6).map((movie) =>(
                     <div className="movie--box"
-                    key={id}>
+                    key={movie.id}
+                    onClick={() => movieClicked(movie)}>
                         <div className="movie--image">
                             <img className="movie--poster" width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
                             <div className="movie--summary">

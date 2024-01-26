@@ -7,6 +7,7 @@ import Header from './header'
 import React from 'react'
 import TvSeries from './pages/tvSeries'
 import TopRatedTvSeries from './pages/topRatedTv'
+import MovieDetails from './pages/movieDetails'
 
 export default function App() {
   
@@ -43,6 +44,7 @@ export default function App() {
     getTopRatedTv()
     },[])
 
+
   return (
     <BrowserRouter>
       <Routes>
@@ -53,10 +55,14 @@ export default function App() {
             tvList={tvList}
             topRatedTvList={topRatedTvList}
           />} />
-          <Route path='/popularMovies' element={<PopularMovies movieList={movieList}/>} />
+          <Route 
+            path='/popularMovies' 
+            element={<PopularMovies movieList={movieList} />} />
           <Route path='/upcomingMovies' element={<UpcomingMovies upcomingList={upcomingList}/>} />
           <Route path='/tvSeries' element={<TvSeries tvList={tvList}/>} />
           <Route path='/topRatedTvSeries' element={<TopRatedTvSeries topRatedTvList={topRatedTvList}/>} />
+          <Route path='/movieDetails' 
+            element={<MovieDetails movieList={movieList} />} />
         </Route>
       </Routes>
     </BrowserRouter>
