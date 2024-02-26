@@ -218,6 +218,8 @@ a.active{
     font: .8rem "merriweather", sans-serif;
     font-weight: bold;
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 .seeAll{
     font-size: 1rem;

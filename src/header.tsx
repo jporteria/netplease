@@ -1,8 +1,12 @@
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import React from 'react'
 import Searched from "./searched";
+import { useContext } from "react";
+//import { MovieContext } from "./App";
 
 export default function Header(){
+
+
 
     function GoToHomePage()
         {

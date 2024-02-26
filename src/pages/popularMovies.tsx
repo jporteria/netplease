@@ -1,14 +1,21 @@
 import { useLayoutEffect } from "react";
+import { useContext } from "react"
+import { MovieContext } from "../App"
 
-export default function PopularMovies(props) {
+export default function PopularMovies() {
     console.log("popular movie")
+    
     useLayoutEffect(() => {
       window.scrollTo(0, 0)
   });
+
+  const { movieList } = useContext(MovieContext)
+
+
   return (
     <div className="allMoviePage">
       <div className="movie--array">
-          {props.movieList.map((movie, id) =>(
+          {movieList.map((movie, id) =>(
               <div className="movie--box"
               key={id}>
                   <div className="movie--image">

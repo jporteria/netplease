@@ -1,21 +1,29 @@
-import './App.css'
+import './styles/App.css'
 import Home from './pages/home'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PopularMovies from './pages/popularMovies'
 import UpcomingMovies from './pages/upcomingMovies'
 import Header from './header'
-import React from 'react'
 import TvSeries from './pages/tvSeries'
 import TopRatedTvSeries from './pages/topRatedTv'
 import MovieDetails from './pages/movieDetails'
+import { useState, useEffect, createContext } from 'react'
+
+
+export const MovieContext = createContext({});
 
 export default function App() {
   
-    const [movieList, setMovieList] = React.useState([])
-    const [upcomingList, setUpcomingList] = React.useState([])
-    const [tvList, setTvList] = React.useState([])
-    const [topRatedTvList, setTopRatedTvList] = React.useState([])
+    //movie states
+    const [movieList, setMovieList] = useState([])
+    const [upcomingList, setUpcomingList] = useState([])
+    const [tvList, setTvList] = useState([])
+    const [topRatedTvList, setTopRatedTvList] = useState([])
+
+    //selected movie
+    const [selectedMovie, setSelectedMovie] = useState([])
   
+    //fetch api
   const getMovie = () => {
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=649f645abf4721a3027659369cc67c24')
     .then(response => response.json())
@@ -37,35 +45,28 @@ export default function App() {
     .then(data => setTopRatedTvList(data.results))
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     getMovie()
     getUpcoming()
     getTv()
     getTopRatedTv()
     },[])
 
-
   return (
+    <MovieContext.Provider value={{movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie}}>
     <BrowserRouter>
       <Routes>
         <Route element={<Header />}>
-          <Route path='/' element={<Home 
-            movieList={movieList}
-            upcomingList={upcomingList}
-            tvList={tvList}
-            topRatedTvList={topRatedTvList}
-          />} />
-          <Route 
-            path='/popularMovies' 
-            element={<PopularMovies movieList={movieList} />} />
-          <Route path='/upcomingMovies' element={<UpcomingMovies upcomingList={upcomingList}/>} />
-          <Route path='/tvSeries' element={<TvSeries tvList={tvList}/>} />
-          <Route path='/topRatedTvSeries' element={<TopRatedTvSeries topRatedTvList={topRatedTvList}/>} />
-          <Route path='/movieDetails' 
-            element={<MovieDetails movieList={movieList} />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/popularMovies' element={<PopularMovies />} />
+          <Route path='/upcomingMovies' element={<UpcomingMovies />} />
+          <Route path='/tvSeries' element={<TvSeries />} />
+          <Route path='/topRatedTvSeries' element={<TopRatedTvSeries />} />
+          <Route path='/movieDetails' element={<MovieDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </MovieContext.Provider>
   )
 }
 

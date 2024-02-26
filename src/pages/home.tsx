@@ -1,4 +1,3 @@
-import '../App.css'
 import Preview from '../preview.tsx'
 import Movies from '../movies.tsx'
 
