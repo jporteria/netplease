@@ -1,0 +1,108 @@
+.auth--form{
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(230, 185, 6), rgb(223, 30, 30));
+    z-index: 2000;
+    height: 50%;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 35%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline:solid rgba(0,0,0,0.7) 2000px;
+    visibility: hidden;
+    transition:all .3s ease-in;
+}
+.auth--form--show{
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(230, 185, 6), rgb(223, 30, 30));
+    z-index: 2000;
+    height: 50%;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 35%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline:solid rgba(0,0,0,0.7) 2000px;
+    visibility: show;
+    transition:all .3s ease-in;
+}
+.auth--type{
+    display: flex;
+    position: absolute;
+    top: 0;
+    height: 14%;
+    width: 95%;
+    top: 3%;
+}
+.authField{
+    display: flex;
+    position: absolute;
+    width: 95%;
+    height: 80%;
+    top: 17%;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+}
+.signUp{
+    width: 50%;
+    border-radius: 20px 0 0 0;
+    border: none;
+    cursor: pointer;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    font: bold 1rem "Merriweather", serif;
+    background: none;
+}
+.signUp--active{
+    width: 50%;
+    border-radius: 20px 0 0 0;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font: bold 1rem "Merriweather", serif;
+}
+.login{
+    width: 50%;
+    border-radius: 0 20px 0 0 ;
+    border: none;
+    cursor: pointer;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    font: bold 1rem "Merriweather", serif;
+    background: none;
+}
+.login--active{
+    width: 50%;
+    border-radius: 0 20px 0 0 ;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font: bold 1rem "Merriweather", serif;
+}
+
+.signUp--form{
+    display: flex;
+    flex-direction: column;
+}
+.close--auth{
+    display: flex;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -8px;
+    right: -8px;
+    background: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+.close--image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: none;
+}

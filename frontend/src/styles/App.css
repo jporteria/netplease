@@ -68,11 +68,18 @@ a.active{
     align-items: center;
     margin-right: 10px;
 }
-.user--signUp{
+.user--login{
     background-color: orange;
     padding: 5px;
     border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.user--signUp{
+    padding: 5px;
+    border-radius: 10px;
     margin-left: 3px;
+    cursor: pointer;
 }
 .preview--box{
     height: 800px;

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "../styles/auth.css"
 
 export default function Signup(){
 
@@ -18,51 +19,35 @@ export default function Signup(){
         })
     }
     console.log(userData)
-
+    
     const navigate = useNavigate()
-
+    
     const signUp = async(e) => {
         e.preventDefault()
-
-        const response = await fetch('http://localhost:5000/signup/', {
-            method: 'POST',
-            body: JSON.stringify(userData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => console.log('success'))
-        .catch(err => console.log(err))
-
-
-        // const json = await response
-
-        // if(!response.ok){
-        //     console.log('failed', json)
-        // }else{
-        //     console.log('success', json)
-        // }
         
-        // try{
-        // }catch(err){
-        //     console.log(err)
-        // }
+        if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
+            const response = await axios.post('http://localhost:5000/signup/', userData)
+            .then(res => navigate('/'))
+            .catch(err => console.log(err.response.statusText))
+        }else{
+            console.log('fill out all field')
+        }
+
+        // fetch api
+        // const response = await fetch('http://localhost:5000/signup/', {
+        //     method: 'POST',
+        //     body: JSON.stringify(userData),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
         
-        // if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
-        //     const addUser = await axios.post("http://localhost:5000/signup/", userData)
-        //         .then(() => alert('succesfully added user'))
-        //         .catch(err => console.log(err))
-        //     addUser
-        //     navigate('/')
-        // }else{
-        //     console.log('fill out all field')
-        // }
         
     }
     
     return(
-        <div>
-            <form action="submit" onSubmit={signUp}>
+        <div className="authField">
+            <form action="submit" onSubmit={signUp} className="signUp--form">
                 <input type="text" onChange={addUser} name="firstName" value={userData.firstName} placeholder="First Name"/>
                 <input type="text" onChange={addUser} name="lastName" value={userData.lastName} placeholder="Last Name"/>
                 <input type="email" onChange={addUser} name="email" value={userData.email} placeholder="Email"/>

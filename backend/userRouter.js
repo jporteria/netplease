@@ -9,18 +9,16 @@ router.get('/login', (req, res) => {
 router.post('/signup', async (req,res) => {
     const {email} = req.body
     const User = new user(req.body)
-    try{
+
+    const exist = await user.findOne({email: email})
+    
+    if(!exist){
         User.save()
-        .then(() => res.status(200))        
-    }catch(err){
-        res.status(400).json(err)
+        res.status(200).send(User)
+    }else{
+        res.statusMessage = 'email already exist'
+        res.status(400).end()
     }
-    // const exist = await user.findOne({email: email})
-    // if(exist){
-    //     console.log('email already taken')
-    // }else{
-    //     User.save()
-    // }
 
     
     // if(req.body.firstName && req.body.lastName && req.body.email && req.body.password !== ''){

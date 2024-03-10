@@ -8,6 +8,7 @@ import TvSeries from './pages/tvSeries'
 import TopRatedTvSeries from './pages/topRatedTv'
 import MovieDetails from './pages/movieDetails'
 import Signup from './user/signup'
+import AuthForm from './user/authForm'
 import { useState, useEffect, createContext } from 'react'
 
 
@@ -65,7 +66,6 @@ export default function App() {
           <Route path='/topRatedTvSeries' element={<TopRatedTvSeries />} />
           <Route path='/movieDetails' element={<MovieDetails />} />
         </Route>
-        <Route path='/signup' element={<Signup />}></Route>
       </Routes>
     </BrowserRouter>
     </MovieContext.Provider>

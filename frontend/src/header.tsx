@@ -1,20 +1,20 @@
 import { NavLink, Outlet, Link } from "react-router-dom";
 import React from 'react'
 import Searched from "./searched";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Signup from "./user/signup";
+import AuthForm from "./user/authForm";
 //import { MovieContext } from "./App";
 
 export default function Header(){
-
-
 
     function GoToHomePage()
         {
             window.location = '/';   
         }
 
-        const [searchedMovie, setSearchedMovie] = React.useState([])
-        const [searchText, setSearchText] = React.useState({title:""})
+        const [searchedMovie, setSearchedMovie] = useState([])
+        const [searchText, setSearchText] = useState({title:""})
         
         const getSearchedMovie = () => {
             fetch(`https://api.themoviedb.org/3/search/movie?query=${searchText.title}&api_key=649f645abf4721a3027659369cc67c24`)
@@ -32,9 +32,21 @@ export default function Header(){
                 getSearchedMovie()
             }
 
-        const [focused, setFocused] = React.useState(false)
+        const [focused, setFocused] = useState(false)
         const onFocus = () => setFocused(true)
         const onBlur = () => setFocused(false)
+
+        const [auth, setAuth] = useState('')
+
+        function showSignUpForm(){
+            document.getElementById('showAuthForm').className = "auth--form--show"
+            setAuth('Signup')
+        }
+        function showLoginForm(){
+            document.getElementById('showAuthForm').className = "auth--form--show"
+            setAuth('Login')
+        }
+
     return(
         <div>
         <div className="header">
@@ -66,20 +78,19 @@ export default function Header(){
                 </div>
             </div>
             <div className="header--user">
-                    <div className="user--login">
-                        Login
-                    </div>
-                <Link to="/signup">
-                    <div className="user--signUp">
+                    <div className='user--signUp' onClick={showSignUpForm}>
                         Sign Up
                     </div>
-                </Link>
+                    <div className="user--login" onClick={showLoginForm}>
+                        Login
+                    </div>
             </div>
         </div>
         <Searched 
         searchedMovie={searchedMovie}
         focused={focused}
-    />
+        />
+        <AuthForm auth={auth} setAuth={setAuth}/>
     <Outlet />
     </div>
     )
