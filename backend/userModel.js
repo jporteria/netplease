@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 
 const userSchema = new schema({
     firstName: {
@@ -22,29 +22,16 @@ const userSchema = new schema({
     }
 }, { timestamps: true })
 
-userSchema.pre('save', async function(){
-    try{
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(this.password, salt)
-        this.password = hashedPassword
+// userSchema.pre('save', async function(){
+//     try{
+//         const salt = await bcrypt.genSalt(10)
+//         const hashedPassword = await bcrypt.hash(this.password, salt)
+//         this.password = hashedPassword
         
-    }catch(err){
-        console.log(err)
-    }
-})
-
-// userSchema.static.signup = async (email, password) => {
-//     const exist = await this.findOne({email})
-
-//     if(exist){
-//         throw error('email already exist')
+//     }catch(err){
+//         console.log(err)
 //     }
-
-//     const salt = await bcrypt.genSalt(10)
-//     const hash = await bcrypt.hash(password, salt)
-//     const user = await this.create({ email, password: hash })
-//     return user
-// }
+// })
 
 const user = mongoose.model('userinfo', userSchema)
 

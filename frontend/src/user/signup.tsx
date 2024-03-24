@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 
-export default function Signup(){
+export default function Signup(props){
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -27,7 +27,10 @@ export default function Signup(){
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
             const response = await axios.post('http://localhost:5000/signup/', userData)
-            .then(res => navigate('/'))
+            .then(res => {
+                alert('Succesfully signed up')
+                props.setAuth('Login')
+            })
             .catch(err => console.log(err.response.statusText))
         }else{
             console.log('fill out all field')
@@ -52,7 +55,8 @@ export default function Signup(){
                 <input type="text" onChange={addUser} name="lastName" value={userData.lastName} placeholder="Last Name"/>
                 <input type="email" onChange={addUser} name="email" value={userData.email} placeholder="Email"/>
                 <input type="password" onChange={addUser} name="password" value={userData.password} placeholder="Password"/>
-                <button>Submit</button>
+                <input type="password" placeholder="Confirm Password"/>
+                <button>Sign Up</button>
             </form>
         </div>
     )

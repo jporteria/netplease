@@ -3,8 +3,20 @@ const router = express.Router()
 const user = require('./userModel')
 
 
-router.get('/login', (req, res) => {
-    res.send('succesfully login')
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body
+    const findEmail = await user.findOne({email: email})
+    const findPassword = await user.findOne({password: password, email: email})
+
+    if(findEmail){
+        if(findPassword){
+            res.status(200).send('ok')
+        }else{
+            res.status(400).send('wrong password')
+        }
+    }else{
+        res.status(400).send('email does not exist')
+    }
 })
 router.post('/signup', async (req,res) => {
     const {email} = req.body

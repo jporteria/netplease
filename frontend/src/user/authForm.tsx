@@ -12,7 +12,7 @@ export default function AuthForm(props){
                 <button className={props.auth == 'Login' ? 'login--active' : 'login'} onClick={() => props.setAuth('Login')}>Login</button>
             </div>
             {
-                props.auth == 'Signup' ? <Signup /> : <Login />
+                props.auth == 'Signup' ? <Signup setAuth={props.setAuth}/> : <Login setAuth={props.setAuth} />
             }
             <button className="close--auth" onClick={() => document.getElementById('showAuthForm').className = "auth--form"}><img src="../image/close.png" alt="X" className="close--image" /></button>
         </div>
