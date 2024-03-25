@@ -21,8 +21,11 @@ export default function Login(props){
     
     const login = async(e) => {
         e.preventDefault()
-        const response = await axios.post('http://localhost:5000/login/', userData)
-            .then(res => console.log(res))
+        const response = await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
+            .then(res => {
+                console.log(res)
+                document.getElementById('showAuthForm').className = "auth--form"
+            })
     }       
  
     

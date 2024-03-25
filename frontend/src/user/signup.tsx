@@ -26,7 +26,7 @@ export default function Signup(props){
         e.preventDefault()
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
-            const response = await axios.post('http://localhost:5000/signup/', userData)
+            const response = await axios.post('https://mymovieapp-6qlq.onrender.com/signup/', userData)
             .then(res => {
                 alert('Succesfully signed up')
                 props.setAuth('Login')

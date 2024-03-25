@@ -10,6 +10,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body
     const findEmail = await user.findOne({email: email})
     const findPassword = await user.findOne({password: password, email: email})
+    // const findFirstname = await user.findOne({firstName, email: email})
 
     if(findEmail){
         if(findPassword){
