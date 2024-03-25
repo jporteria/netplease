@@ -3,6 +3,9 @@ const router = express.Router()
 const user = require('./userModel')
 
 
+router.get('/', (req, res) => {
+    res.send('myMovieApp is live')
+})
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
     const findEmail = await user.findOne({email: email})
