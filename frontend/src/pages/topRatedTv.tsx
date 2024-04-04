@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useLayoutEffect } from "react";
 import { useContext } from "react"
 import { MovieContext } from "../App"
 
@@ -13,7 +13,12 @@ export default function TopRatedTvSeries() {
   return (
     <div className="allMoviePage">
         <div className="movie--array">
-            {topRatedTvList.map((movie, id) =>(
+            {topRatedTvList.map((movie: { 
+                    poster_path: any; 
+                    overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+                    name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, 
+                    id: Key | null | undefined
+                ) =>(
                 <div className="movie--box"
                 key={id}>
                     <div className="movie--image">

@@ -1,15 +1,15 @@
-import React from "react"
+// import React from "react"
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useContext } from "react"
 import { MovieContext } from "./App"
 
 export default function Movies(){
 
-    const {movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie} = useContext(MovieContext)
+    const {movieList, upcomingList, tvList, topRatedTvList, setSelectedMovie} = useContext(MovieContext)
     // console.log(mov)
     
 
-    function movieClicked(value) {
+    function movieClicked(value: any) {
         // window.location = '/movieDetails';  
         setSelectedMovie(value)
     }
@@ -21,7 +21,12 @@ export default function Movies(){
                 <Link to="/popularMovies">See all</Link>
             </div>
             <div className="movie--array">
-                {movieList.slice(0, 6).map((movie, id) =>(
+                {movieList.slice(0, 6).map((movie: { 
+                            poster_path: any; 
+                            overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+                            original_title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined }, 
+                            id: Key | null | undefined
+                        ) =>(
                     <Link to="/movieDetails">
                     <div className="movie--box"
                     key={id}
@@ -43,7 +48,12 @@ export default function Movies(){
                 <Link to="/upcomingMovies">See all</Link>
             </div>
             <div className="movie--array">
-                {upcomingList.slice(0, 6).map((movie, id) =>(
+                {upcomingList.slice(0, 6).map((movie: { 
+                            poster_path: any; 
+                            overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+                            original_title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined }, 
+                            id: Key | null | undefined
+                        ) =>(
                     <Link to="/movieDetails">
                     <div className="movie--box"
                     key={id}
@@ -65,7 +75,12 @@ export default function Movies(){
                 <Link to="/tvSeries">See all</Link>
             </div>
             <div className="movie--array">
-                {tvList.slice(0, 6).map((movie, id) =>(
+                {tvList.slice(0, 6).map((movie: { 
+                            poster_path: any; 
+                            overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+                            name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined }, 
+                            id: Key | null | undefined
+                        ) =>(
                     <Link to="/movieDetails">
                     <div className="movie--box"
                     key={id}
@@ -87,7 +102,12 @@ export default function Movies(){
                 <Link to="/topRatedTvSeries">See all</Link>
             </div>
             <div className="movie--array">
-                {topRatedTvList.slice(0, 6).map((movie, id) =>(
+                {topRatedTvList.slice(0, 6).map((movie: { 
+                            poster_path: any; 
+                            overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+                            name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined }, 
+                            id: Key | null | undefined
+                        ) =>(
                     <Link to="/movieDetails">
                     <div className="movie--box"
                     key={id}

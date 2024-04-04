@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 
-export default function Signup(props){
+export default function Signup(props: { setAuth: (arg0: string) => void }){
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -12,7 +12,7 @@ export default function Signup(props){
         password: ""
     })
 
-    const addUser = e => {
+    const addUser = (e: { target: { name: any; value: any } }) => {
         setUserData({
             ...userData,
             [e.target.name] : e.target.value
@@ -20,14 +20,14 @@ export default function Signup(props){
     }
     console.log(userData)
     
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
-    const signUp = async(e) => {
+    const signUp = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
-            const response = await axios.post('https://mymovieapp-6qlq.onrender.com/signup/', userData)
-            .then(res => {
+            await axios.post('https://mymovieapp-6qlq.onrender.com/signup/', userData)
+            .then(() => {
                 alert('Succesfully signed up')
                 props.setAuth('Login')
             })

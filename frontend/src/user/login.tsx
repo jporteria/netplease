@@ -1,30 +1,33 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 
-export default function Login(props){
+export default function Login(props: { setAuth: (arg0: string) => void }){
 
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     })
 
-    const addUser = e => {
+    const addUser = (e: { target: { name: any; value: any } }) => {
         setUserData({
             ...userData,
             [e.target.name] : e.target.value
         })
     }
     console.log(userData)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
-    const login = async(e) => {
+    const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
-        const response = await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
+        await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
             .then(res => {
                 console.log(res)
-                document.getElementById('showAuthForm').className = "auth--form"
+                const auth = document.getElementById('showAuthForm')
+                if(auth){
+                    auth.className = "auth--form"
+                }
             })
     }       
  

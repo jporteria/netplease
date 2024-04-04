@@ -1,17 +1,12 @@
 import Preview from '../preview.tsx'
 import Movies from '../movies.tsx'
 
-export default function Home(props) {
+export default function Home() {
 
   return (
     <div className='homePage'>
         <Preview />
-        <Movies
-            movieList={props.movieList}
-            upcomingList={props.upcomingList}
-            tvList={props.tvList}
-            topRatedTvList={props.topRatedTvList}
-        />
+        <Movies />
         </div>
   )
 }

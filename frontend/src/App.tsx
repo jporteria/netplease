@@ -7,12 +7,10 @@ import Header from './header'
 import TvSeries from './pages/tvSeries'
 import TopRatedTvSeries from './pages/topRatedTv'
 import MovieDetails from './pages/movieDetails'
-import Signup from './user/signup'
-import AuthForm from './user/authForm'
 import { useState, useEffect, createContext } from 'react'
 
 
-export const MovieContext = createContext({});
+export const MovieContext = createContext<any>({});
 
 export default function App() {
   

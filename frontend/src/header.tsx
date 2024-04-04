@@ -1,16 +1,13 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
-import React from 'react'
+import { NavLink, Outlet } from "react-router-dom";
 import Searched from "./searched";
-import { useContext, useState } from "react";
-import Signup from "./user/signup";
+import { useState } from "react";
 import AuthForm from "./user/authForm";
 //import { MovieContext } from "./App";
 
 export default function Header(){
 
-    function GoToHomePage()
-        {
-            window.location = '/';   
+    function GoToHomePage(){
+            window.location.href = '/';   
         }
 
         const [searchedMovie, setSearchedMovie] = useState([])
@@ -23,7 +20,7 @@ export default function Header(){
         }
 
 
-            function handleChange(event){
+            function handleChange(event: { target: { value: any; }; }){
             const { value } = event.target
             setSearchText(prevSearch => ({
                 ...prevSearch,
@@ -39,11 +36,17 @@ export default function Header(){
         const [auth, setAuth] = useState('')
 
         function showSignUpForm(){
-            document.getElementById('showAuthForm').className = "auth--form--show"
+            const auth = document.getElementById('showAuthForm')
+            if(auth){
+                auth.className = "auth--form--show"
+            }
             setAuth('Signup')
         }
         function showLoginForm(){
-            document.getElementById('showAuthForm').className = "auth--form--show"
+            const auth = document.getElementById('showAuthForm')
+            if(auth){
+                auth.className = "auth--form--show"
+            }
             setAuth('Login')
         }
 
