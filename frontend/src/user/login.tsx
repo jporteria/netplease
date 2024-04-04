@@ -23,7 +23,8 @@ export default function Login(props: { setAuth: (arg0: string) => void }){
         e.preventDefault()
         await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
             .then(res => {
-                console.log(res)
+                alert(`Welcome ${res.data.firstName}`)
+                // console.log(res.data.firstName)
                 const auth = document.getElementById('showAuthForm')
                 if(auth){
                     auth.className = "auth--form"

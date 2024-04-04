@@ -27,7 +27,8 @@ export default function Signup(props: { setAuth: (arg0: string) => void }){
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
             await axios.post('https://mymovieapp-6qlq.onrender.com/signup/', userData)
-            .then(() => {
+            .then((res) => {
+                console.log(res)
                 alert('Succesfully signed up')
                 props.setAuth('Login')
             })

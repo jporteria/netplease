@@ -10,13 +10,13 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body
     const findEmail = await user.findOne({email: email})
     const findPassword = await user.findOne({password: password, email: email})
-    // const findFirstname = await user.findOne({firstName, email: email})
+    // const findFirstname = await user.findOne({email: email}, (error, data))
 
     if(findEmail){
         if(findPassword){
-            res.status(200).send('ok')
+            res.status(200).send(findEmail)
         }else{
-            res.status(400).send('wrong password')
+            res.status(400).send('incorrect password')
         }
     }else{
         res.status(400).send('email does not exist')

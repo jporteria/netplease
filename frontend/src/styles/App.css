@@ -117,7 +117,7 @@ a.active{
 }
 .resultBoxHidden{
     display: grid;
-    right: 60px;
+    right: 90px;
     position: fixed;
     width: 350px;
     height: 500px;
@@ -127,7 +127,7 @@ a.active{
 }
 .resultBoxShow{
     display: grid;
-    right: 60px;
+    right: 90px;
     position: fixed;
     width: 350px;
     height: 500px;
