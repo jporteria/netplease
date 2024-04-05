@@ -25,6 +25,9 @@ export default function Preview(){
                                 <h1 className="preview--title">{movie.original_title}</h1>
                         </div>
                 ))}
+                <div className='viewError'>
+                        <h1>For better experience, please use desktop view mode</h1>
+                </div>
             </div>
         
         
