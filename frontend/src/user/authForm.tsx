@@ -1,7 +1,7 @@
 import Login from "./login";
 import Signup from "./signup";
 
-export default function AuthForm(props: { auth: string; setAuth: (arg0: string) => void; }){
+export default function AuthForm(props: { auth: string; setAuth: (arg0: string) => void; setUser: (arg0: string) => void; user: any; }){
 
 
 
@@ -12,7 +12,7 @@ export default function AuthForm(props: { auth: string; setAuth: (arg0: string) 
                 <button className={props.auth == 'Login' ? 'login--active' : 'login'} onClick={() => props.setAuth('Login')}>Login</button>
             </div>
             {
-                props.auth == 'Signup' ? <Signup setAuth={props.setAuth}/> : <Login setAuth={props.setAuth} />
+                props.auth == 'Signup' ? <Signup setAuth={props.setAuth}/> : <Login setAuth={props.setAuth} setUser={props.setUser} user={props.user} />
             }
             <button className="close--auth" onClick={() => {
                 const auth = document.getElementById('showAuthForm')

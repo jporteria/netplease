@@ -68,6 +68,51 @@ a.active{
     align-items: center;
     margin-right: 10px;
 }
+.user--icon{
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.user--profile{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(39, 38, 38);
+    border-radius: 5px; 
+    height: auto;
+    width: 200px;
+    display: none;
+    right: 30px;
+    margin-top: 50px;
+}
+.show--user--profile{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(39, 38, 38);
+    border-radius: 5px; 
+    height: auto;
+    width: 200px;
+    z-index: 100;
+    right: 30px;
+    margin-top: 50px;
+}
+.user--name{
+    margin: 20px;
+}
+.user--options{
+    margin-left: 15px;
+    margin-bottom: 15px;
+    color: gray;
+    cursor: pointer;
+}
+.user--options > div{
+    margin: 5px;
+}
+.logout{
+    color: white;
+}
 .user--login{
     background-color: orange;
     padding: 5px;
@@ -149,20 +194,7 @@ a.active{
     cursor: pointer;
     font-size: .8rem;
 }
-.viewError{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    z-index: -1;
-}
-.viewError > h1 {
-    margin: 0;
-    font-size: 3rem;
-    text-shadow: 0 0 10px black;
-    color: red;
-}
+
 @media (max-width: 1300px){
     .movie--array{
         grid-template-columns: repeat(5, 1fr);
@@ -182,6 +214,9 @@ a.active{
     .movie--array{
         grid-template-columns: repeat(2, 1fr);
     }
+    /* .viewError{
+        z-index: 100;
+    } */
 }
 @media (max-width: 500px){
     .movie--array{
@@ -194,9 +229,9 @@ a.active{
     .preview--title{
         visibility: hidden;
     }
-    .viewError{
-        z-index: 1;
-    }
+    /* .viewError{
+        z-index: 100;
+    } */
 }
 
 .movie--box{
@@ -256,3 +291,20 @@ a.active{
     font-size: 1rem;
     text-decoration: underline;
 }
+/* .viewError{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+    background-color: yellow;
+    z-index: -100;
+}
+.viewError > h1 {
+    margin: 0;
+    font-size: 1rem;
+    text-shadow: 0 0 10px black;
+    color: red;
+} */

@@ -3,7 +3,7 @@ import { useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 
-export default function Login(props: { setAuth: (arg0: string) => void }){
+export default function Login(props: { setUser: (arg0: string) => void; user: any; setAuth: (arg0: string) => void }){
 
     const [userData, setUserData] = useState({
         email: "",
@@ -22,16 +22,17 @@ export default function Login(props: { setAuth: (arg0: string) => void }){
     const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
         await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
-            .then(res => {
+            .then((res) => {
                 alert(`Welcome ${res.data.firstName}`)
-                // console.log(res.data.firstName)
+                props.setUser(res.data)
+
                 const auth = document.getElementById('showAuthForm')
                 if(auth){
                     auth.className = "auth--form"
                 }
             })
     }       
- 
+
     
     return(
         <div className="authField">

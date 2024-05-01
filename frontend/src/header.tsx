@@ -34,6 +34,9 @@ export default function Header(){
         const onBlur = () => setFocused(false)
 
         const [auth, setAuth] = useState('')
+        const [user, setUser] = useState('')
+        
+        console.log(user)
 
         function showSignUpForm(){
             const auth = document.getElementById('showAuthForm')
@@ -50,13 +53,26 @@ export default function Header(){
             setAuth('Login')
         }
 
+        const [userProfile, setUserProfile] = useState('user--profile')
+        function showUserProfile(){
+            if(userProfile == 'user--profile'){
+                setUserProfile('show--user--profile')
+            }else{
+                setUserProfile('user--profile')
+            }
+        }
+
     return(
-        <div>
+        <div className="top">
+            {/* <div className='viewError'>
+                    <h1>For better experience, please use desktop view mode</h1>
+            </div> */}
         <div className="header">
             <div className="site--name"
                 onClick={GoToHomePage}
             >
-                <img className="header--logo" src="../image/jc.jpg" />Netplease
+                {/* <img className="header--logo" src="../image/jc.jpg" /> */}
+                Netplease
             </div>
             <div className="header--movies">
                 <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/popularMovies">Popular Movies</NavLink>
@@ -80,20 +96,37 @@ export default function Header(){
                     </button> */}
                 </div>
             </div>
-            <div className="header--user">
-                    <div className='user--signUp' onClick={showSignUpForm}>
-                        Sign Up
+                {
+                    user 
+                    ? 
+                    <div className="header--user" onClick={showUserProfile}>
+                        <img className='user--icon' src="../image/user.png" alt="no user" />
+                    </div> 
+                    : 
+                    <div className="header--user">
+                        <div className='user--signUp' onClick={showSignUpForm}>
+                            Sign Up
+                        </div>
+                        <div className="user--login" onClick={showLoginForm}>
+                            Login
+                        </div>
                     </div>
-                    <div className="user--login" onClick={showLoginForm}>
-                        Login
-                    </div>
+                }
+        </div>
+        <div className={userProfile}>
+            <div className="user--name">{`${user.firstName} ${user.lastName}`}</div>
+            <div className="user--options">
+                <div className="watchList">Watch List</div>
+                <div className="reviews">Reviews</div>
+                <div className="settings">Account Settings</div>
+                <div className="logout" onClick={() => {setUser(''), setUserProfile('user--profile')}}>Logout</div>
             </div>
         </div>
         <Searched 
         searchedMovie={searchedMovie}
         focused={focused}
         />
-        <AuthForm auth={auth} setAuth={setAuth}/>
+        <AuthForm auth={auth} setAuth={setAuth} user={user} setUser={setUser}/>
     <Outlet />
     </div>
     )
