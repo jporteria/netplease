@@ -13,7 +13,7 @@ export default function Movies(){
         // window.location = '/movieDetails';  
         setSelectedMovie(value)
     }
-
+ 
     return(
         <div className="movie--selection">
             <div className="movie--header">
