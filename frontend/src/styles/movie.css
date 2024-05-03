@@ -1,16 +1,23 @@
 .detail--box{
     display: grid;
     grid-template-columns: 250px 1fr;
+    /* border: 1px solid blue; */
+    position: absolute;
+    margin: 50px;
 }
 .detail--image{
     height: 270px;
     width: 190px;
     border-radius: 15px;
     margin: 30px 30px;
+    outline: solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .detail--description{
     margin: 30px 50px 30px 0;
-    width: 100%;
+    width: 80%;
 }
 .detail--description > p{
     font-size: .8rem;
@@ -32,4 +39,26 @@
 }
 .votes-releaseDate > p{
     font-size: .8rem;
+}
+.movieDetails--preview--box{
+    height: 800px;
+    display: flex;
+    align-items: end;
+    /* justify-content: center; */
+    padding-bottom: 20px;
+}
+.movieDetails--image{
+    opacity: .5;
+}
+.movieDetails{
+    height: 1200px;
+    width: 100%;
+    position: relative;
+}
+.relatedMovies--h1{
+    margin-left: 20px;
+}
+.relatedMovies{
+    display: flex;
+    margin-left: 50px;
 }
