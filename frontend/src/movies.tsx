@@ -18,7 +18,7 @@ export default function Movies(){
         <div className="movie--selection">
             <div className="movie--header">
                 <div>Popular Movies</div>
-                <Link to="/popularMovies">See all</Link>
+                <Link className="seeAll" to="/popularMovies">See all</Link>
             </div>
             <div className="movie--array">
                 {movieList.slice(0, 6).map((movie: { 
@@ -45,7 +45,7 @@ export default function Movies(){
             
             <div className="movie--header">
                 <div>Upcoming Movies</div>
-                <Link to="/upcomingMovies">See all</Link>
+                <Link className="seeAll" to="/upcomingMovies">See all</Link>
             </div>
             <div className="movie--array">
                 {upcomingList.slice(0, 6).map((movie: { 
@@ -72,7 +72,7 @@ export default function Movies(){
 
             <div className="movie--header">
                 <div>TV Series</div>
-                <Link to="/tvSeries">See all</Link>
+                <Link className="seeAll" to="/tvSeries">See all</Link>
             </div>
             <div className="movie--array">
                 {tvList.slice(0, 6).map((movie: { 
@@ -99,7 +99,7 @@ export default function Movies(){
 
             <div className="movie--header">
                 <div>Top Rated TV Series</div>
-                <Link to="/topRatedTvSeries">See all</Link>
+                <Link className="seeAll" to="/topRatedTvSeries">See all</Link>
             </div>
             <div className="movie--array">
                 {topRatedTvList.slice(0, 6).map((movie: { 

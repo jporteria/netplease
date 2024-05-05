@@ -18,11 +18,18 @@ export default function Preview(){
 
 
     return(
-            <div className="preview--box">
-                {trendingList.slice(2,3).map((movie: {backdrop_path:any; original_title:any; id: any | null |undefined;}) =>(
-                        <div key={movie.id}>
-                                <img width="100%" height="100%" key={movie.id} src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} />
-                                <h1 className="preview--title">{movie.original_title}</h1>
+            <div>
+                {trendingList.slice(0,1).map((movie: {backdrop_path:any; original_title:any; id: any | null |undefined;}) =>(
+                        <div className="preview--box" key={movie.id}>
+                                <img className='preview--image' width="100%" height="100%" key={movie.id} src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} />
+                                {/* <h1 className="preview--title">{movie.original_title}</h1> */}
+                                <div className="preview--text">
+                                        <h1>Unlock the Magic of Cinema</h1>
+                                        <h2>Dive into Expert Reviews and Discover the Finest Films!</h2>
+                                </div>
+                                <div className='arrow--down'>
+                                        <img width="100%" height="100%" src="../image/arrow-down.png" alt="" />
+                                </div>
                         </div>
                 ))}
             </div>

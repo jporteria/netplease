@@ -10,7 +10,9 @@ export default function MovieDetails() {
   return (
     <div className='movieDetails'>
       <div className="movieDetails--preview--box">
-        <img className='movieDetails--image' width="100%" height="100%" src={`https://www.themoviedb.org/t/p/original${selectedMovie.backdrop_path}`} />
+        <div className='preview--image'>
+          <img width="100%" height="100%" src={`https://www.themoviedb.org/t/p/original${selectedMovie.backdrop_path}`} />
+        </div>
         <div className='detail--box'>
           <div className='detail--image'>
           <img className="movie--poster" width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}/>

@@ -9,7 +9,6 @@ import TopRatedTvSeries from './pages/topRatedTv'
 import MovieDetails from './pages/movieDetails'
 import { useState, useEffect, createContext } from 'react'
 
-
 export const MovieContext = createContext<any>({});
 
 export default function App() {

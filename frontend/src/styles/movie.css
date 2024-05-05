@@ -41,14 +41,11 @@
     font-size: .8rem;
 }
 .movieDetails--preview--box{
-    height: 800px;
+    height: 100vh;
     display: flex;
     align-items: end;
     /* justify-content: center; */
     padding-bottom: 20px;
-}
-.movieDetails--image{
-    opacity: .5;
 }
 .movieDetails{
     height: 1200px;

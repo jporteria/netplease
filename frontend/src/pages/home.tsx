@@ -1,5 +1,7 @@
 import Preview from '../preview.tsx'
 import Movies from '../movies.tsx'
+import Footer from '../footer'
+
 
 export default function Home() {
 
@@ -7,6 +9,7 @@ export default function Home() {
     <div className='homePage'>
         <Preview />
         <Movies />
+        <Footer />
     </div>
   )
 }
