@@ -1,9 +1,13 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
+import { MovieContext } from "../App"
 
-export default function Login(props: { setUser: (arg0: string) => void; user: any; setAuth: (arg0: string) => void }){
+export default function Login(){
+
+    const { setAuth, setUser } = useContext(MovieContext)
+
 
     const [userData, setUserData] = useState({
         email: "",
@@ -24,7 +28,7 @@ export default function Login(props: { setUser: (arg0: string) => void; user: an
         await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
             .then((res) => {
                 alert(`Welcome ${res.data.firstName}`)
-                props.setUser(res.data)
+                setUser(res.data)
 
                 const auth = document.getElementById('showAuthForm')
                 if(auth){
@@ -39,7 +43,7 @@ export default function Login(props: { setUser: (arg0: string) => void; user: an
             <form action="submit" onSubmit={login} className="signUp--form">
                 <input type="email" onChange={addUser} name="email" value={userData.email} placeholder="Email"/>
                 <input type="password" onChange={addUser} name="password" value={userData.password} placeholder="Password"/>
-                <p className="dontHaveAccount" onClick={() => props.setAuth('Signup')}>I don't have an account</p>
+                <p className="dontHaveAccount" onClick={() => setAuth('Signup')}>I don't have an account</p>
                 <button>Login</button>
             </form>
         </div>

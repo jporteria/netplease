@@ -8,6 +8,7 @@ import TvSeries from './pages/tvSeries'
 import TopRatedTvSeries from './pages/topRatedTv'
 import MovieDetails from './pages/movieDetails'
 import { useState, useEffect, createContext } from 'react'
+import AuthForm from './user/authForm'
 
 export const MovieContext = createContext<any>({});
 
@@ -21,6 +22,10 @@ export default function App() {
 
     //selected movie
     const [selectedMovie, setSelectedMovie] = useState([])
+
+    //user
+    const [auth, setAuth] = useState('')
+    const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: ''})
   
     //fetch api
   const getMovie = () => {
@@ -52,7 +57,7 @@ export default function App() {
     },[])
 
   return (
-    <MovieContext.Provider value={{movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie}}>
+    <MovieContext.Provider value={{movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie, auth, setAuth, user, setUser}}>
     <BrowserRouter>
       <Routes>
         <Route element={<Header />}>
@@ -62,6 +67,7 @@ export default function App() {
           <Route path='/tvSeries' element={<TvSeries />} />
           <Route path='/topRatedTvSeries' element={<TopRatedTvSeries />} />
           <Route path='/movieDetails' element={<MovieDetails />} />
+          <Route path='/authForm' element={<AuthForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,18 +1,21 @@
+import { useContext } from "react";
 import Login from "./login";
 import Signup from "./signup";
+import { MovieContext } from "../App";
 
-export default function AuthForm(props: { auth: string; setAuth: (arg0: string) => void; setUser: (arg0: string) => void; user: any; }){
+export default function AuthForm(){
 
+    const { auth, setAuth } = useContext(MovieContext)
 
 
     return(
         <div id="showAuthForm" className="auth--form">
             <div className="auth--type">
-                <button className={props.auth == 'Signup' ? 'signUp--active' : 'signUp'} onClick={() => props.setAuth('Signup')}>Sign Up</button>
-                <button className={props.auth == 'Login' ? 'login--active' : 'login'} onClick={() => props.setAuth('Login')}>Login</button>
+                <button className={auth == 'Signup' ? 'signUp--active' : 'signUp'} onClick={() => setAuth('Signup')}>Sign Up</button>
+                <button className={auth == 'Login' ? 'login--active' : 'login'} onClick={() => setAuth('Login')}>Login</button>
             </div>
             {
-                props.auth == 'Signup' ? <Signup setAuth={props.setAuth}/> : <Login setAuth={props.setAuth} setUser={props.setUser} user={props.user} />
+                auth == 'Signup' ? <Signup /> : <Login />
             }
             <button className="close--auth" onClick={() => {
                 const auth = document.getElementById('showAuthForm')

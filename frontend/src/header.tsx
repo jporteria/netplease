@@ -1,7 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Searched from "./searched";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AuthForm from "./user/authForm";
+import { MovieContext } from "./App";
 //import { MovieContext } from "./App";
 
 export default function Header(){
@@ -9,6 +10,9 @@ export default function Header(){
     function GoToHomePage(){
             window.location.href = '/';   
         }
+
+        const { setAuth, user, setUser } = useContext(MovieContext)
+
 
         const [searchedMovie, setSearchedMovie] = useState([])
         const [searchText, setSearchText] = useState({title:""})
@@ -33,8 +37,8 @@ export default function Header(){
         const onFocus = () => setFocused(true)
         const onBlur = () => setFocused(false)
 
-        const [auth, setAuth] = useState('')
-        const [user, setUser] = useState('')
+        // const [auth, setAuth] = useState('')
+        // const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: ''})
         
         console.log(user)
 
@@ -97,7 +101,7 @@ export default function Header(){
                 </div>
             </div>
                 {
-                    user 
+                    user.firstName 
                     ? 
                     <div className="header--user" onClick={showUserProfile}>
                         <img className='user--icon' src="../image/user.png" alt="no user" />
@@ -119,14 +123,14 @@ export default function Header(){
                 <div className="watchList">Watch List</div>
                 <div className="reviews">Reviews</div>
                 <div className="settings">Account Settings</div>
-                <div className="logout" onClick={() => {setUser(''), setUserProfile('user--profile')}}>Logout</div>
+                <div className="logout" onClick={() => {setUser({firstName: '', lastName: '', email: '', password: ''}), setUserProfile('user--profile')}}>Logout</div>
             </div>
         </div>
         <Searched 
         searchedMovie={searchedMovie}
         focused={focused}
         />
-        <AuthForm auth={auth} setAuth={setAuth} user={user} setUser={setUser}/>
+        <AuthForm />
     <Outlet />
     </div>
     )

@@ -1,9 +1,12 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
+import { MovieContext } from "../App"
 
-export default function Signup(props: { setAuth: (arg0: string) => void }){
+export default function Signup(){
+
+    const { setAuth } = useContext(MovieContext)
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -30,7 +33,7 @@ export default function Signup(props: { setAuth: (arg0: string) => void }){
             .then((res) => {
                 console.log(res)
                 alert('Succesfully signed up')
-                props.setAuth('Login')
+                setAuth('Login')
             })
             .catch(err => console.log(err.response.statusText))
         }else{
