@@ -19,7 +19,7 @@ export default function AuthForm(props: { auth: string; setAuth: (arg0: string) 
                 if(auth){
                     auth.className = "auth--form"
                 }
-                }}><img src="../image/close.png" alt="X" className="close--image" /></button>
+                }}><img src="../../image/close.png" alt="X" className="close--image" /></button>
         </div>
     )
 }

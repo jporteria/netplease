@@ -2,6 +2,7 @@ import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useLa
 import { useContext } from "react"
 import { MovieContext } from "../App"
 import { Link } from "react-router-dom";
+import Footer from "../footer";
 
 export default function TvSeries() {
     console.log("tv series")
@@ -19,16 +20,16 @@ export default function TvSeries() {
   return (
     <div className="allMoviePage">
       <div className="movie--array">
-            {tvList.map((movie: { 
+            {tvList.slice(0,18).map((movie: { 
                     poster_path: any; 
                     overview: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
                     name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, 
                     id: Key | null | undefined
                 ) =>(
-                <Link to="/movieDetails">
-                <div className="movie--box"
+                  <div className="movie--box"
                 key={id}
                 onClick={() => movieClicked(movie)}>
+                  <Link to="/movieDetails">
                     <div className="movie--image">
                         <img className="movie--poster" width="100%" height="100%" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
                         <div className="movie--summary">
@@ -36,10 +37,11 @@ export default function TvSeries() {
                         </div>
                     </div>
                     <p className="movie--name">{movie.name}</p>
+                  </Link>
                 </div>
-                </Link>
             ))}
         </div>
+        <Footer />
     </div>
   )
 }
