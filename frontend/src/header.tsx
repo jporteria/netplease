@@ -104,7 +104,7 @@ export default function Header(){
                     user.firstName 
                     ? 
                     <div className="header--user" onClick={showUserProfile}>
-                        <img className='user--icon' src="../image/user.png" alt="no user" />
+                        <img className='user--icon' src="https://drive.google.com/thumbnail?id=1dgRZJeX4kNcdsv2xQIFnvppTdNJBh3jp&sz=w1000" alt="no user" />
                     </div> 
                     : 
                     <div className="header--user">

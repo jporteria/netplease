@@ -28,7 +28,7 @@ export default function Preview(){
                                         <h2>Dive into Expert Reviews and Discover the Finest Films!</h2>
                                 </div>
                                 <div className='arrow--down'>
-                                        <img width="100%" height="100%" src="/src/image/arrow-down.png" alt="" />
+                                        <img width="100%" height="100%" src="https://drive.google.com/thumbnail?id=1Wbr9InCz4paNVd2AP18UUIhrHAdVrmgi&sz=w1000" alt="" />
                                 </div>
                         </div>
                 ))}

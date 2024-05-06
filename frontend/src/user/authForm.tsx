@@ -22,7 +22,7 @@ export default function AuthForm(){
                 if(auth){
                     auth.className = "auth--form"
                 }
-                }}><img src="/src/image/close.png" alt="X" className="close--image" /></button>
+                }}><img src="https://drive.google.com/thumbnail?id=12TeG6eyieFo3BUImG42OvScXlkMzSpA3&sz=w1000" alt="X" className="close--image" /></button>
         </div>
     )
 }
