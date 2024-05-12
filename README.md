@@ -12,9 +12,10 @@ Rate and Review (Coming soon): Share your opinions and insights by rating movies
 
 # Installation
 
--clone repo
+- clone repositories
 
--install npm package > npm install
+- install npm package
+> npm install
 
 > cd frontend > npm run dev
 
