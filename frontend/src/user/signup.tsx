@@ -28,8 +28,6 @@ export default function Signup(){
     
     const signUp = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
-
-        const confirmPass = document.getElementById('confirmPass')
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
 
