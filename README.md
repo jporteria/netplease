@@ -10,12 +10,18 @@
 
 # Installation
 
--clone repo
--install npm package
-  -npm install
+- clone repositories
 
--cd frontend
--npm run dev
-
--cd backend
--nodemon app
+- install npm package
+```
+npm install
+```
+- cd into the folder and execute package
+```
+cd frontend
+npm run dev
+```
+```
+cd backend
+nodemon app
+```
