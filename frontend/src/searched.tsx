@@ -1,7 +1,7 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
 
 export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
-    
+
   return (
     <div className={props.focused? "resultBoxShow" : "resultBoxHidden"}>
         {props.searchedMovie.slice(0,10).map((movie: { 

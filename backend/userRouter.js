@@ -16,10 +16,10 @@ router.post('/login', async (req, res) => {
         if(findPassword){
             res.status(200).send(findEmail)
         }else{
-            res.status(400).send('incorrect password')
+            res.status(400).send('Incorrect Password')
         }
     }else{
-        res.status(400).send('email does not exist')
+        res.status(400).send('Email does not exist')
     }
 })
 router.post('/signup', async (req,res) => {
@@ -32,7 +32,7 @@ router.post('/signup', async (req,res) => {
         User.save()
         res.status(200).send(User)
     }else{
-        res.statusMessage = 'email already exist'
+        res.statusMessage = 'Email already exist'
         res.status(400).end()
     }
 

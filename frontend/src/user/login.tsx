@@ -35,6 +35,7 @@ export default function Login(){
                     auth.className = "auth--form"
                 }
             })
+            .catch(err => alert(err.response.data))
     }       
 
     

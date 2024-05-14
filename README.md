@@ -13,11 +13,9 @@ Rate and Review (Coming soon): Share your opinions and insights by rating movies
 # Installation
 
 -clone repo
--install npm package
-  -npm install
 
--cd frontend
--npm run dev
+-install npm package > npm install
 
--cd backend
--nodemon app
+> cd frontend > npm run dev
+
+> cd backend > nodemon app
