@@ -16,6 +16,25 @@ export default function Preview(){
         
         // const slideImage = [{trendingList}]
 
+        function handleWindowScroll(arrow: HTMLElement): void {
+                window.addEventListener('scroll', () => {
+                  // Use the 'arrow' passed in as a parameter, no need to query it again
+                  if (window.scrollY > 20) {
+                    arrow.classList.add('arrow--hide');
+                    arrow.classList.remove('arrow--down');
+                  } else {
+                    arrow.classList.add('arrow--down');
+                    arrow.classList.remove('arrow--hide');
+                  }
+                });
+              }
+        const arrowDiv = document.getElementById('arrow') as HTMLElement;
+
+              // Call the function with the arrow element if it exists
+              if (arrowDiv) {
+                handleWindowScroll(arrowDiv);
+              }
+              
 
     return(
             <div>
@@ -27,7 +46,7 @@ export default function Preview(){
                                         <h1>Unlock the Magic of Cinema</h1>
                                         <h2>Dive into Expert Reviews and Discover the Finest Films!</h2>
                                 </div>
-                                <div className='arrow--down'>
+                                <div id="arrow" className="arrow arrow--down">
                                         <img width="100%" height="100%" src="https://drive.google.com/thumbnail?id=1Wbr9InCz4paNVd2AP18UUIhrHAdVrmgi&sz=w1000" alt="" />
                                 </div>
                         </div>

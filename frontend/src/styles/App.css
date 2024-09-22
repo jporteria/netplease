@@ -165,6 +165,19 @@ a.active{
     animation-name: move;
     animation-duration: 2s;
     animation-iteration-count: 999;
+    transition:all .5s ease;
+}
+.arrow--hide{
+    width: 100px;
+    position: absolute;
+    display: flex;
+    margin: 25px;
+    bottom: 20px;
+    opacity: 0;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: 999;
+    transition:all .5s ease;
 }
 @keyframes move{
     0% { bottom: 20px; }
