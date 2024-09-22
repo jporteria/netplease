@@ -31,22 +31,45 @@ export default function Signup(){
         
         if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){
 
-            if(userData.password == userData.confirmPass){
-                await axios.post('https://mymovieapp-6qlq.onrender.com/signup/', {
+            // backend url for production = https://mymovieapp-6qlq.onrender.com
+
+            const response = await fetch(`http://localhost:5000/signup`, {
+                //Step 1 - Task 6
+                method: 'POST',
+                //Step 1 - Task 7
+                headers: {
+                    'content-type': 'application/json'
+                },
+                //Step 1 - Task 8
+                body: JSON.stringify({
                     firstName: userData.firstName,
                     lastName: userData.lastName,
                     email: userData.email,
                     password: userData.password
                 })
-                .then((res) => {
-                    console.log(res)
-                    alert('Succesfully signed up')
-                    setAuth('Login')
-                })
-                .catch(err => console.log(err.response.statusText))
-            }else{
-                alert('password did not match')
-            }
+            });
+
+            const json = await response.json();
+            console.log('json data', json);
+            console.log('er', json.error);
+
+
+            // if(userData.password == userData.confirmPass){
+            //     await axios.post('http://localhost:5000/signup/', {
+            //         firstName: userData.firstName,
+            //         lastName: userData.lastName,
+            //         email: userData.email,
+            //         password: userData.password
+            //     })
+            //     .then((res) => {
+            //         console.log(res)
+            //         alert('Succesfully signed up')
+            //         setAuth('Login')
+            //     })
+            //     .catch(err => console.log(err.response.statusText))
+            // }else{
+            //     alert('password did not match')
+            // }
 
         }else{
             console.log('fill out all field')
