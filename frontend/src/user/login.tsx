@@ -6,7 +6,7 @@ import { MovieContext } from "../App"
 
 export default function Login(){
 
-    const { setAuth, setUser } = useContext(MovieContext)
+    const { setAuth, setAuthToken } = useContext(MovieContext)
 
 
     const [userData, setUserData] = useState({
@@ -22,20 +22,24 @@ export default function Login(){
     }
     console.log(userData)
     // const navigate = useNavigate()
+    // backend url 'https://mymovieapp-6qlq.onrender.com/login/'
     
     const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
-        await axios.post('https://mymovieapp-6qlq.onrender.com/login/', userData)
+        await axios.post('http://localhost:5000/login/', userData)
             .then((res) => {
                 alert(`Welcome ${res.data.firstName}`)
-                setUser(res.data)
+                sessionStorage.setItem('auth-token', res.data.authtoken);
+                sessionStorage.setItem('auth-firstname', res.data.firstName);
+                sessionStorage.setItem('auth-lastname', res.data.lastName);
+                setAuthToken(sessionStorage.getItem('auth-token'))
 
                 const auth = document.getElementById('showAuthForm')
                 if(auth){
                     auth.className = "auth--form"
                 }
             })
-            .catch(err => alert(err.response.data))
+            .catch(err => alert(err.response.data.error))
     }       
 
     

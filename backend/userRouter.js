@@ -12,26 +12,44 @@ router.get('/', (req, res) => {
 })
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
-    const findEmail = await user.findOne({email: email})
-    const findPassword = await user.findOne({password: password, email: email})
-    // const findFirstname = await user.findOne({email: email}, (error, data))
-    
 
-    if(findEmail){
-        if(findPassword){
-            res.status(200).send(findEmail)
-        }else{
-            res.status(400).send('Incorrect Password')
+    const db = await connectToDatabase();
+    const collection = db.collection("users");
+
+    const loginUser = await collection.findOne({email: email})
+
+    if(loginUser){
+        let result = await bcryptjs.compare(req.body.password, loginUser.password)
+
+        if(!result){
+            return res.status(404).json({ error: 'Wrong pasword' });
         }
+        let payload = {
+            user: {
+                id: loginUser._id.toString(),
+            },
+        };
+
+        // const userName = loginUser.firstName;
+        // const userEmail = loginUser.email;
+
+        const authtoken = jwt.sign(payload, JWT_SECRET, {expiresIn: '1h'});
+        const firstName = loginUser.firstName
+        const lastName = loginUser.lastName
+        console.log('successfully logged in')
+        return res.status(200).json({ authtoken, firstName, lastName });
+
     }else{
-        res.status(400).send('Email does not exist')
+        res.status(400).json({ error: 'Email does not exist' });
     }
 })
 router.post('/signup', async (req,res) => {
     try{
         const {email} = req.body
+
         const db = await connectToDatabase();
         const collection = db.collection("users");
+
         const existingEmail = await collection.findOne({ email: req.body.email });
         
         if(existingEmail){

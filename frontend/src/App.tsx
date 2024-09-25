@@ -26,6 +26,7 @@ export default function App() {
     //user
     const [auth, setAuth] = useState('')
     const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: ''})
+    const [authToken, setAuthToken] = useState(sessionStorage.getItem('auth-token'))
   
     //fetch api
   const getMovie = () => {
@@ -57,7 +58,7 @@ export default function App() {
     },[])
 
   return (
-    <MovieContext.Provider value={{movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie, auth, setAuth, user, setUser}}>
+    <MovieContext.Provider value={{movieList, upcomingList, tvList, topRatedTvList, selectedMovie, setSelectedMovie, auth, setAuth, user, setUser, authToken, setAuthToken}}>
     <BrowserRouter>
       <Routes>
         <Route element={<Header />}>

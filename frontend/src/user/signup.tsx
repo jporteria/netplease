@@ -34,13 +34,10 @@ export default function Signup(){
             // backend url for production = https://mymovieapp-6qlq.onrender.com
 
             const response = await fetch(`http://localhost:5000/signup`, {
-                //Step 1 - Task 6
                 method: 'POST',
-                //Step 1 - Task 7
                 headers: {
                     'content-type': 'application/json'
                 },
-                //Step 1 - Task 8
                 body: JSON.stringify({
                     firstName: userData.firstName,
                     lastName: userData.lastName,
@@ -52,7 +49,7 @@ export default function Signup(){
             const json = await response.json();
             console.log('json data', json);
             console.log('er', json.error);
-
+            setAuth('Login')
 
             // if(userData.password == userData.confirmPass){
             //     await axios.post('http://localhost:5000/signup/', {

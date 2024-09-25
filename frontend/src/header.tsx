@@ -11,7 +11,7 @@ export default function Header(){
             window.location.href = '/';   
         }
 
-        const { setAuth, user, setUser } = useContext(MovieContext)
+        const { setAuth, authToken, setAuthToken } = useContext(MovieContext)
 
 
         const [searchedMovie, setSearchedMovie] = useState([])
@@ -39,8 +39,6 @@ export default function Header(){
 
         // const [auth, setAuth] = useState('')
         // const [user, setUser] = useState({firstName: '', lastName: '', email: '', password: ''})
-        
-        console.log(user)
 
         function showSignUpForm(){
             const auth = document.getElementById('showAuthForm')
@@ -58,6 +56,11 @@ export default function Header(){
         }
 
         const [userProfile, setUserProfile] = useState('user--profile')
+        // const authToken = sessionStorage.getItem('auth-token')
+        const firstname = sessionStorage.getItem('auth-firstname')
+        const lastname = sessionStorage.getItem('auth-lastname')
+        
+
         function showUserProfile(){
             if(userProfile == 'user--profile'){
                 setUserProfile('show--user--profile')
@@ -65,6 +68,7 @@ export default function Header(){
                 setUserProfile('user--profile')
             }
         }
+
 
     return(
         <div className="top">
@@ -101,7 +105,7 @@ export default function Header(){
                 </div>
             </div>
                 {
-                    user.firstName 
+                    authToken 
                     ? 
                     <div className="header--user" onClick={showUserProfile}>
                         <img className='user--icon' src="https://drive.google.com/thumbnail?id=1dgRZJeX4kNcdsv2xQIFnvppTdNJBh3jp&sz=w1000" alt="no user" />
@@ -118,12 +122,18 @@ export default function Header(){
                 }
         </div>
         <div className={userProfile}>
-            <div className="user--name">{`${user.firstName} ${user.lastName}`}</div>
+            <div className="user--name">{`${firstname} ${lastname}`}</div>
             <div className="user--options">
                 <div className="watchList">Watch List</div>
                 <div className="reviews">Reviews</div>
                 <div className="settings">Account Settings</div>
-                <div className="logout" onClick={() => {setUser({firstName: '', lastName: '', email: '', password: ''}), setUserProfile('user--profile')}}>Logout</div>
+                <div className="logout" onClick={() => {
+                                                        setUserProfile('user--profile'),
+                                                        sessionStorage.removeItem('auth-token'),
+                                                        sessionStorage.removeItem('auth-firstname'),
+                                                        sessionStorage.removeItem('auth-lastname'),
+                                                        setAuthToken('')
+                                                        }}>Logout</div>
             </div>
         </div>
         <Searched 
