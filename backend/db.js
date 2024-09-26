@@ -1,11 +1,12 @@
 const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config()
 
 // MongoDB connection URL with authentication options
-const url = 'mongodb+srv://wagako:wagako@cluster0.yeyyahe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const url = process.env.DB_URL
+const dbName = process.env.DB_NAME
 
 
 let dbInstance = null;
-const dbName = "netpleaseUser";
 
 async function connectToDatabase() {
     if (dbInstance){
@@ -14,8 +15,9 @@ async function connectToDatabase() {
 
     const client = new MongoClient(url);
 
-    await client.connect();
+    await client.connect()
     dbInstance = client.db(dbName);
+
     return dbInstance;
 }
 

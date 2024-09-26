@@ -3,9 +3,10 @@ const app = express()
 const mongoose = require('mongoose')
 const router = require('./userRouter')
 const cors = require('cors')
+require('dotenv').config()
+const connectToDatabase = require('./db')
 
-const URIdb = 'mongodb+srv://wagako:wagako@cluster0.yeyyahe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-mongoose.connect(URIdb)
+connectToDatabase()
     .then(result => {
         app.listen(5000, () => {
             console.log('listening on port 5000')

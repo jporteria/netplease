@@ -4,8 +4,9 @@ const user = require('./userModel')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const connectToDatabase = require('./db')
+require('dotenv').config()
 
-const JWT_SECRET = 'HELLO'
+const SECRET = process.env.JWT_SECRET
 
 router.get('/', (req, res) => {
     res.send('myMovieApp is live')
@@ -33,7 +34,7 @@ router.post('/login', async (req, res) => {
         // const userName = loginUser.firstName;
         // const userEmail = loginUser.email;
 
-        const authtoken = jwt.sign(payload, JWT_SECRET, {expiresIn: '1h'});
+        const authtoken = jwt.sign(payload, SECRET, {expiresIn: '1h'});
         const firstName = loginUser.firstName
         const lastName = loginUser.lastName
         console.log('successfully logged in')
@@ -71,33 +72,13 @@ router.post('/signup', async (req,res) => {
             },
         };
 
-        const authtoken = jwt.sign(payload, JWT_SECRET, {expiresIn: '1h'});
+        const authtoken = jwt.sign(payload, SECRET, {expiresIn: '1h'});
         console.log('new user added')
         return res.json({ authtoken,email});
     } catch (e) {
         console.log(e)
         return res.status(500).send('Internal server error');
     }
-
-
-    // if(!exist){
-    //     User.save()
-    //     res.status(200).send(User)
-    // }else{
-    //     res.statusMessage = 'Email already exist'
-    //     res.status(400).end()
-    // }
-
-    
-    // if(req.body.firstName && req.body.lastName && req.body.email && req.body.password !== ''){
-
-
-
-    //     await User.save()
-    //     console.log(req.body)
-    // }else{
-    //     console.log("error")
-    // }
 })
 
 module.exports = router

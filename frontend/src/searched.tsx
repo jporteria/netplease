@@ -2,9 +2,7 @@ import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from
 
 export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
 
-  function handleClick(e: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | Iterable<ReactNode> | null | undefined){
-    console.log(e)
-  }
+  
   return (
     <div className={props.focused? "resultBoxShow" : "resultBoxHidden"}>
         {props.searchedMovie.slice(0,10).map((movie: { 
@@ -12,7 +10,7 @@ export default function Searched(props: { focused: any; searchedMovie: any[]; })
               original_title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, 
               id: Key | null | undefined
             ) =>(
-            <div className="search--result" key={id} onClick={handleClick()}>
+            <div className="search--result" key={id}>
                 <div className="movie--image">
                     <img className="movie--poster" width="30px" height="50px" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
                 </div>

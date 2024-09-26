@@ -6,8 +6,9 @@ import { MovieContext } from "../App"
 
 export default function Login(){
 
-    const { setAuth, setAuthToken } = useContext(MovieContext)
+    const apiUrl = import.meta.env.VITE_API_URL
 
+    const { setAuth, setAuthToken } = useContext(MovieContext)
 
     const [userData, setUserData] = useState({
         email: "",
@@ -26,7 +27,7 @@ export default function Login(){
     
     const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
-        await axios.post('http://localhost:5000/login/', userData)
+        await axios.post(`${apiUrl}/login`, userData)
             .then((res) => {
                 alert(`Welcome ${res.data.firstName}`)
                 sessionStorage.setItem('auth-token', res.data.authtoken);
