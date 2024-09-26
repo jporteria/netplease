@@ -10,11 +10,11 @@ export default function UpcomingMovies() {
       window.scrollTo(0, 0)
   });
 
-  const { upcomingList, setSelectedMovie } = useContext(MovieContext)
+  const { upcomingList } = useContext(MovieContext)
 
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    setSelectedMovie(value)
+    sessionStorage.setItem('movie', JSON.stringify(value))
   }
 
   return (

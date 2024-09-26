@@ -10,11 +10,11 @@ export default function TvSeries() {
       window.scrollTo(0, 0)
   });
 
-  const { tvList, setSelectedMovie } = useContext(MovieContext)
+  const { tvList } = useContext(MovieContext)
   
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    setSelectedMovie(value)
+    sessionStorage.setItem('movie', JSON.stringify(value))
   }
 
   return (

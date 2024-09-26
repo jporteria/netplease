@@ -228,6 +228,7 @@ a.active{
     margin-top: 65px;
     visibility: hidden;
     z-index: 1000;
+    transition: all .2s;
 }
 .resultBoxShow{
     display: grid;
@@ -238,6 +239,7 @@ a.active{
     margin-top: 65px;
     visibility: show;
     z-index: 1000;
+    transition: all .2s;
 }
 .search--result{
     height: 50px;
@@ -246,12 +248,17 @@ a.active{
     display: grid;
     grid-template-columns: 12% 88%;
 }
+.search--result:hover{
+    transform: scale(1.06);
+}
 .search--result > div > img{
     border-radius: 5px;
 }
 .search--movie--name{
     cursor: pointer;
     font-size: .8rem;
+    color: white;
+    text-decoration: none;
 }
 
 @media (max-width: 1300px){

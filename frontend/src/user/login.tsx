@@ -21,9 +21,6 @@ export default function Login(){
             [e.target.name] : e.target.value
         })
     }
-    console.log(userData)
-    // const navigate = useNavigate()
-    // backend url 'https://mymovieapp-6qlq.onrender.com/login/'
     
     const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()

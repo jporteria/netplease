@@ -1,12 +1,13 @@
 import '../styles/movie.css'
-import { useContext, useLayoutEffect } from "react"
-import { MovieContext } from "../App"
+import { useLayoutEffect } from "react"
 import Footer from '../footer'
 
 export default function MovieDetails() {
 
-  const { selectedMovie } = useContext(MovieContext)
-  console.log(selectedMovie)
+  // const { selectedMovie } = useContext(MovieContext)
+
+  const movie = sessionStorage.getItem('movie') || ''
+  const selectedMovie = JSON.parse(movie)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)

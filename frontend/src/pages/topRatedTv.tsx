@@ -10,11 +10,11 @@ export default function TopRatedTvSeries() {
       window.scrollTo(0, 0)
   });
 
-  const { topRatedTvList, setSelectedMovie } = useContext(MovieContext)
+  const { topRatedTvList } = useContext(MovieContext)
 
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    setSelectedMovie(value)
+    sessionStorage.setItem('movie', JSON.stringify(value))
   }
   
   return (

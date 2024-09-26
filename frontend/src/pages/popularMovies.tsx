@@ -10,11 +10,11 @@ export default function PopularMovies() {
       window.scrollTo(0, 0)
   });
 
-  const { movieList, setSelectedMovie } = useContext(MovieContext)
+  const { movieList } = useContext(MovieContext)
 
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    setSelectedMovie(value)
+    sessionStorage.setItem('movie', JSON.stringify(value))
   }
 
   return (
