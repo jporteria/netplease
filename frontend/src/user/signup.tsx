@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useContext, useRef, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
@@ -17,11 +16,11 @@ export default function Signup(){
         password: "",
         confirmPass: ""
     })
-    const firstNameRef = useRef(null)
-    const lastNameRef = useRef(null)
-    const emailRef = useRef(null)
-    const passwordRef = useRef(null)
-    const confirmPasswordRef = useRef(null)
+    const firstNameRef = useRef<HTMLInputElement>(null)
+    const lastNameRef = useRef<HTMLInputElement>(null)
+    const emailRef = useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
+    const confirmPasswordRef = useRef<HTMLInputElement>(null)
 
 
 
@@ -31,9 +30,6 @@ export default function Signup(){
             [e.target.name] : e.target.value
         })
     }
-    console.log(userData)
-    
-    // const navigate = useNavigate()
     
     const signUp = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
@@ -69,10 +65,10 @@ export default function Signup(){
             }else{
                 alert('Please confirm password');
                 setUserData({...userData, confirmPass: ""});
-                confirmPasswordRef.current.focus();
+                confirmPasswordRef.current?.focus();
             }
         }else{
-            firstEmptyField.ref.current.focus();
+            firstEmptyField?.ref.current?.focus();
         }
 
         // if(userData.firstName && userData.lastName && userData.email && userData.password !== ''){

@@ -5,7 +5,7 @@ import { MovieContext } from "./App"
 
 export default function Movies(){
 
-    const {movieList, upcomingList, tvList, topRatedTvList, setSelectedMovie} = useContext(MovieContext)
+    const {movieList, upcomingList, tvList, topRatedTvList} = useContext(MovieContext)
     // console.log(mov)
     
 
