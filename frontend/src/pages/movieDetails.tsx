@@ -6,7 +6,7 @@ export default function MovieDetails() {
 
   // const { selectedMovie } = useContext(MovieContext)
 
-  const movie = sessionStorage.getItem('movie')
+  const movie = localStorage.getItem('movie')
   const selectedMovie = JSON.parse(movie ?? 'no movie selected')
 
   useLayoutEffect(() => {

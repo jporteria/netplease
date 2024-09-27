@@ -10,7 +10,7 @@ export default function Movies(){
     
 
     function movieClicked(value: any) {
-        sessionStorage.setItem('movie', JSON.stringify(value))
+        localStorage.setItem('movie', JSON.stringify(value))
     }
  
     return(

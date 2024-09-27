@@ -1,13 +1,10 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
 import { Link } from "react-router-dom"
 
-export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
+export default function Searched(props: { focused: unknown; searchedMovie: any[]; }) {
 
   function movieClicked(value: unknown) {
-    sessionStorage.setItem('movie', JSON.stringify(value))
-    if(location.href == '/movieDetails'){
-      location.reload()
-    }
+    localStorage.setItem('movie', JSON.stringify(value))
   }
   // console.log(sessionStorage.getItem('movie'))
 
@@ -15,7 +12,7 @@ export default function Searched(props: { focused: any; searchedMovie: any[]; })
     <div className={props.focused? "resultBoxShow" : "resultBoxHidden"}>
         {props.searchedMovie.slice(0,10).map((movie: { 
           poster_path: unknown; 
-          original_title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, 
+          original_title: string | number | boolean | ReactElement<unknown, string | JSXElementConstructor<unknown>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, 
           id: Key | null | undefined
         ) =>(
           <Link to="/movieDetails">

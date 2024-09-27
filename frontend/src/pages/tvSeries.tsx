@@ -14,7 +14,7 @@ export default function TvSeries() {
   
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    sessionStorage.setItem('movie', JSON.stringify(value))
+    localStorage.setItem('movie', JSON.stringify(value))
   }
 
   return (
