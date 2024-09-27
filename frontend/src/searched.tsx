@@ -1,5 +1,5 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
 
