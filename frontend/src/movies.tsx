@@ -6,11 +6,12 @@ import { MovieContext } from "./App"
 export default function Movies(){
 
     const {movieList, upcomingList, tvList, topRatedTvList} = useContext(MovieContext)
-    // console.log(mov)
-    
+    const { setSelectedMovie } = useContext(MovieContext)
+
 
     function movieClicked(value: any) {
-        localStorage.setItem('movie', JSON.stringify(value))
+        // localStorage.setItem('movie', JSON.stringify(value))
+        setSelectedMovie(value)
     }
  
     return(
