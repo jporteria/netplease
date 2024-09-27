@@ -7,6 +7,7 @@ export default function Searched(props: { focused: any; searchedMovie: any[]; })
     sessionStorage.setItem('movie', JSON.stringify(value))
     location.href = '/movieDetails'
   }
+  console.log(sessionStorage.getItem('movie'))
 
   return (
     <div className={props.focused? "resultBoxShow" : "resultBoxHidden"}>
