@@ -11,10 +11,13 @@ export default function TopRatedTvSeries() {
   });
 
   const { topRatedTvList } = useContext(MovieContext)
+  const { setSelectedMovie } = useContext(MovieContext)
+
 
   function movieClicked(value: any) {
     // window.location = '/movieDetails';  
-    localStorage.setItem('movie', JSON.stringify(value))
+    // localStorage.setItem('movie', JSON.stringify(value))
+    setSelectedMovie(value)
   }
   
   return (
