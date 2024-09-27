@@ -5,6 +5,7 @@ export default function Searched(props: { focused: unknown; searchedMovie: any[]
 
   function movieClicked(value: unknown) {
     localStorage.setItem('movie', JSON.stringify(value))
+    window.location.href = '/movieDetails'
   }
   // console.log(sessionStorage.getItem('movie'))
 
