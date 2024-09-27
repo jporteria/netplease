@@ -1,13 +1,22 @@
 import '../styles/movie.css'
-import { useLayoutEffect } from "react"
+import { useContext, useLayoutEffect } from "react"
 import Footer from '../footer'
+import { MovieContext } from '../App'
 
 export default function MovieDetails() {
 
-  // const { selectedMovie } = useContext(MovieContext)
+  const { selectedMovie } = useContext(MovieContext)
+  // const [s, setSelectedMovie] = useState<any>(localStorage.getItem('movie') ?? '')
 
-  const movie = localStorage.getItem('movie')
-  const selectedMovie = JSON.parse(movie ?? 'no movie selected')
+  // useEffect(() => {
+  //   const movie = localStorage.getItem('movie');
+  //   const s = JSON.parse(movie ?? 'null'); 
+  //   setSelectedMovie(s);
+  // }, []);
+  // setSelectedMovie(localStorage.getItem('movie') ?? '')
+  // const selectedMovie = JSON.parse(s)
+
+    console.log(selectedMovie)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)

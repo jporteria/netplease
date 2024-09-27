@@ -21,7 +21,7 @@ export default function App() {
     const [topRatedTvList, setTopRatedTvList] = useState([])
 
     //selected movie
-    const [selectedMovie, setSelectedMovie] = useState([])
+    const [selectedMovie, setSelectedMovie] = useState<any>([])
 
     //user
     const [auth, setAuth] = useState('')

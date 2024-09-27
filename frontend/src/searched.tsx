@@ -1,11 +1,17 @@
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key, useContext } from "react";
 import { Link } from "react-router-dom"
+import { MovieContext } from './App'
+
 
 export default function Searched(props: { focused: unknown; searchedMovie: any[]; }) {
 
-  function movieClicked(value: unknown) {
-    localStorage.setItem('movie', JSON.stringify(value))
-    window.location.href = 'https://netplease.onrender.com/movieDetails'
+  const { setSelectedMovie } = useContext(MovieContext)
+
+
+  function movieClicked(value: { poster_path: unknown; original_title: string | number | boolean | ReactElement<unknown, string | JSXElementConstructor<unknown>> | Iterable<ReactNode> | ReactPortal | null | undefined; }) {
+    // localStorage.setItem('movie', JSON.stringify(value))
+    // window.location.href = 'https://netplease.onrender.com/movieDetails'
+    setSelectedMovie(value)
   }
   // console.log(sessionStorage.getItem('movie'))
 
