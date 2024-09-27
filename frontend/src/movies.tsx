@@ -13,7 +13,6 @@ export default function Movies(){
         // window.location = '/movieDetails';  
         // setSelectedMovie(value)
         sessionStorage.setItem('movie', JSON.stringify(value))
-
     }
  
     return(

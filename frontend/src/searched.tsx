@@ -3,7 +3,11 @@ import { Link } from "react-router-dom"
 
 export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
 
-  
+  function movieClicked(value: any) {
+    sessionStorage.setItem('movie', JSON.stringify(value))
+    location.href = '/movieDetails'
+  }
+
   return (
     <div className={props.focused? "resultBoxShow" : "resultBoxHidden"}>
         {props.searchedMovie.slice(0,10).map((movie: { 
@@ -12,10 +16,7 @@ export default function Searched(props: { focused: any; searchedMovie: any[]; })
           id: Key | null | undefined
         ) =>(
           <Link to="/movieDetails">
-            <div className="search--result" key={id} onClick={()=> {
-              sessionStorage.setItem('movie', JSON.stringify(movie))
-                location.href = '/movieDetails'
-              }}>
+            <div className="search--result" key={id} onClick={()=>movieClicked(movie)}>
                   <div className="movie--image">
                       <img className="movie--poster" width="30px" height="50px" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
                   </div>
