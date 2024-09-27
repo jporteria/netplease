@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 export default function Searched(props: { focused: any; searchedMovie: any[]; }) {
 
   function movieClicked(value: unknown) {
-    sessionStorage.removeItem('movie')
     sessionStorage.setItem('movie', JSON.stringify(value))
+    location.reload()
   }
   // console.log(sessionStorage.getItem('movie'))
 

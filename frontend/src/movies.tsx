@@ -10,9 +10,6 @@ export default function Movies(){
     
 
     function movieClicked(value: any) {
-        // window.location = '/movieDetails';  
-        // setSelectedMovie(value)
-        sessionStorage.removeItem('movie')
         sessionStorage.setItem('movie', JSON.stringify(value))
     }
  
