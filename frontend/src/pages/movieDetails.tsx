@@ -6,8 +6,8 @@ export default function MovieDetails() {
 
   // const { selectedMovie } = useContext(MovieContext)
 
-  const movie = sessionStorage.getItem('movie') || ''
-  const selectedMovie = JSON.parse(movie)
+  const movie = sessionStorage.getItem('movie')
+  const selectedMovie = JSON.parse(movie ?? 'no movie selected')
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
