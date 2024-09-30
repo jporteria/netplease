@@ -1,6 +1,6 @@
-# [NetPlease](https://netplease.onrender.com/) (work in progress)
+# [NetPlease](https://netplease.onrender.com/) (in progress)
 
-[NetPlease](https://netplease.onrender.com/) is a movie rating website aimed at providing users with a platform to discover, rate, and review movies. This project is created using MERN stack and movie API from [TMDb](https://www.themoviedb.org/). This website is still in the development phase and does not have a responsive design yet.
+[NetPlease](https://netplease.onrender.com/) is a movie rating website designed to allow users to discover, rate, and review movies. Built using MERN stack, it leverages a RESTful API and implements secure authentication with JWT and hashed passwords. The project integrates movie data from [TMDb](https://www.themoviedb.org/). Please note that the website is still under development and does not yet have a responsive design.
 
 # Features
 
@@ -10,18 +10,27 @@
 
 # Installation
 
-- clone repositories
+**1. Clone the repository:**
+```bash
+https://github.com/jporteria/netplease.git
+```
 
-- install npm package
+**2. Install npm packages for both frontend and backend:**
 ```
 npm install
 ```
-- cd into the folder and execute package
+**3. Update the environment variables in the .env file with your own/preferred credentials.**
+
+**4. Run the application in separate terminals:**
+  
+- Terminal 1: Navigate to the frontend folder and start the development server:
 ```
-cd frontend
+cd netplease/frontend
 npm run dev
 ```
+- Terminal 2: Navigate to the backend folder and run the backend server with nodemon:
 ```
-cd backend
+cd netplease/backend
 nodemon app
 ```
+
