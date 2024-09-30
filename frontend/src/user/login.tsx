@@ -10,6 +10,7 @@ export default function Login(){
     const apiUrl = import.meta.env.VITE_API_URL
 
     const { setAuth, setAuthToken } = useContext(MovieContext)
+    const [buttonDisabled, setButtonDisabled] = useState(false)
 
     const [userData, setUserData] = useState({
         email: "",
@@ -36,13 +37,15 @@ export default function Login(){
               toast.onmouseleave = Swal.resumeTimer;
             }
           });
-
+        setButtonDisabled(true)
         await axios.post(`${apiUrl}/login`, userData)
             .then((res) => {
                 Toast.fire({
                     icon: "success",
                     title: `Welcome ${res.data.firstName}`
                   });
+                setButtonDisabled(false)
+
                 // alert(`Welcome ${res.data.firstName}`)
                 sessionStorage.setItem('auth-token', res.data.authtoken);
                 sessionStorage.setItem('auth-firstname', res.data.firstName);

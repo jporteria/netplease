@@ -141,8 +141,22 @@
     cursor: pointer;
 }
 .buttonDisabled{
+    margin: 20px;
+    width: 30%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(to right, rgb(230, 185, 6), rgb(223, 30, 30));
+    box-shadow: 1px 1px 2px 1px black;
+    cursor: pointer;
+    font: bold .9rem "Merriweather", serif;
     cursor: not-allowed;
 }
 .buttonEnabled > button:hover{
     transform: scale(1.1);
+}
+.buttonLoading{
+    margin: 20px;
+    width: 30%;
+    height: 30px;
 }

@@ -79,7 +79,7 @@ export default function Signup(){
                     // console.log('err', res.error);
                       Toast.fire({
                         icon: "success",
-                        title: "Signed in successfully"
+                        title: "Signed up successfully"
                       });
                       setButtonDisabled(false)
                       setAuth('Login')
@@ -145,8 +145,13 @@ export default function Signup(){
                 <input type="email" onChange={addUser} ref={emailRef} name="email" value={userData.email} placeholder="Email"/>
                 <input type="password" onChange={addUser} ref={passwordRef} name="password" value={userData.password} placeholder="Password"/>
                 <input type="password" onChange={addUser} ref={confirmPasswordRef} name="confirmPass" value={userData.confirmPass} placeholder="Confirm Password"/>
-                {/* <input type="password" placeholder="Confirm Password" id="confirmPass"/> */}
-                <button className={buttonDisabled ? 'buttonDisabled' : 'buttonEnabled'}>Sign Up</button>
+                {
+                    buttonDisabled 
+                    ?
+                    <img className="buttonLoading" src="./loading.gif" alt="" />                
+                    :
+                    <button className='buttonEnabled'>Submit</button>
+                }
             </form>
         </div>
     )
