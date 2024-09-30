@@ -2,12 +2,15 @@ import { useContext, useRef, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 import { MovieContext } from "../App"
+import Swal from 'sweetalert2'
 
 export default function Signup(){
 
     const apiUrl = import.meta.env.VITE_API_URL
 
     const { setAuth } = useContext(MovieContext)
+
+    const [buttonDisabled, setButtonDisabled] = useState(false)
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -34,6 +37,18 @@ export default function Signup(){
     const signUp = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          
         const field = [
             {ref: firstNameRef, value: userData.firstName},
             {ref: lastNameRef, value: userData.lastName},
@@ -45,7 +60,9 @@ export default function Signup(){
         const firstEmptyField = field.find(f => f.value.trim() === '')
         if(!firstEmptyField){
             if(userData.password === userData.confirmPass){
-                const response = await fetch(`${apiUrl}/signup`, {
+                setButtonDisabled(true)
+                // const response = 
+                await fetch(`${apiUrl}/signup`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -55,15 +72,28 @@ export default function Signup(){
                         lastName: userData.lastName,
                         email: userData.email,
                         password: userData.password
-                    })
-                });
-        
-                const json = await response.json();
-                console.log('json data', json);
-                console.log('er', json.error);
-                setAuth('Login')
+                    })  
+                })
+                .then((res) => {
+                    res.json()
+                    // console.log('err', res.error);
+                      Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                      });
+                      setButtonDisabled(false)
+                      setAuth('Login')
+                })
+                // const json = await response.json();
+                // console.log('json data', json);
+
+                // alert
+
             }else{
-                alert('Please confirm password');
+                Toast.fire({
+                    icon: "warning",
+                    title: "Please confirm password"
+                  });
                 setUserData({...userData, confirmPass: ""});
                 confirmPasswordRef.current?.focus();
             }
@@ -116,7 +146,7 @@ export default function Signup(){
                 <input type="password" onChange={addUser} ref={passwordRef} name="password" value={userData.password} placeholder="Password"/>
                 <input type="password" onChange={addUser} ref={confirmPasswordRef} name="confirmPass" value={userData.confirmPass} placeholder="Confirm Password"/>
                 {/* <input type="password" placeholder="Confirm Password" id="confirmPass"/> */}
-                <button>Sign Up</button>
+                <button className={buttonDisabled ? 'buttonDisabled' : 'buttonEnabled'}>Sign Up</button>
             </form>
         </div>
     )

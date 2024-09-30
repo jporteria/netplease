@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 import "../styles/auth.css"
 import { MovieContext } from "../App"
+import Swal from "sweetalert2"
 
 export default function Login(){
 
@@ -24,9 +25,25 @@ export default function Login(){
     
     const login = async(e: { preventDefault: () => void }) => {
         e.preventDefault()
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+
         await axios.post(`${apiUrl}/login`, userData)
             .then((res) => {
-                alert(`Welcome ${res.data.firstName}`)
+                Toast.fire({
+                    icon: "success",
+                    title: `Welcome ${res.data.firstName}`
+                  });
+                // alert(`Welcome ${res.data.firstName}`)
                 sessionStorage.setItem('auth-token', res.data.authtoken);
                 sessionStorage.setItem('auth-firstname', res.data.firstName);
                 sessionStorage.setItem('auth-lastname', res.data.lastName);
@@ -37,7 +54,12 @@ export default function Login(){
                     auth.className = "auth--form"
                 }
             })
-            .catch(err => alert(err.response.data.error))
+            .catch(err => {
+                Toast.fire({
+                    icon: "error",
+                    title: err.response.data.error
+                  });
+            })
     }       
 
     
@@ -47,7 +69,7 @@ export default function Login(){
                 <input type="email" onChange={addUser} name="email" value={userData.email} placeholder="Email"/>
                 <input type="password" onChange={addUser} name="password" value={userData.password} placeholder="Password"/>
                 <p className="dontHaveAccount" onClick={() => setAuth('Signup')}>I don't have an account</p>
-                <button>Login</button>
+                <button className="buttonEnabled">Login</button>
             </form>
         </div>
     )

@@ -1,7 +1,7 @@
 .auth--form{
     border-radius: 20px;
     background: linear-gradient(to bottom, rgb(230, 185, 6), rgb(223, 30, 30));
-    z-index: 2000;
+    z-index: 2;
     height: 50%;
     width: 30%;
     margin-top: 10%;
@@ -17,7 +17,7 @@
 .auth--form--show{
     border-radius: 20px;
     background: linear-gradient(to bottom, rgb(230, 185, 6), rgb(223, 30, 30));
-    z-index: 2000;
+    z-index: 2;
     height: 50%;
     width: 30%;
     margin-top: 10%;
@@ -103,20 +103,6 @@
 .signUp--form > input:focus{
     box-shadow: 0 0 2px 5px rgb(235, 161, 4);
 }
-.signUp--form > button{
-    margin: 20px;
-    width: 30%;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    background: linear-gradient(to right, rgb(230, 185, 6), rgb(223, 30, 30));
-    box-shadow: 1px 1px 2px 1px black;
-    cursor: pointer;
-    font: bold .9rem "Merriweather", serif;
-}
-.signUp--form > button:hover{
-    transform: scale(1.1);
-}
 .close--auth{
     display: flex;
     position: absolute;
@@ -142,4 +128,21 @@
     cursor: pointer;
     text-decoration: underline;
 }
-
+.buttonEnabled{
+    margin: 20px;
+    width: 30%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(to right, rgb(230, 185, 6), rgb(223, 30, 30));
+    box-shadow: 1px 1px 2px 1px black;
+    cursor: pointer;
+    font: bold .9rem "Merriweather", serif;
+    cursor: pointer;
+}
+.buttonDisabled{
+    cursor: not-allowed;
+}
+.buttonEnabled > button:hover{
+    transform: scale(1.1);
+}
