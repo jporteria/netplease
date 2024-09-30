@@ -6,10 +6,11 @@ const cors = require('cors')
 require('dotenv').config()
 const connectToDatabase = require('./db')
 
+const port = process.env.PORT
 connectToDatabase()
     .then(result => {
-        app.listen(5000, () => {
-            console.log('listening on port 5000')
+        app.listen(port, () => {
+            console.log(`listening on port ${port}`)
         })
     })
     .catch(err => console.log(err))
