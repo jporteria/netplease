@@ -62,6 +62,7 @@ export default function Login(){
                     icon: "error",
                     title: err.response.data.error
                   });
+                  setButtonDisabled(false)
             })
     }       
 
@@ -72,7 +73,13 @@ export default function Login(){
                 <input type="email" onChange={addUser} name="email" value={userData.email} placeholder="Email"/>
                 <input type="password" onChange={addUser} name="password" value={userData.password} placeholder="Password"/>
                 <p className="dontHaveAccount" onClick={() => setAuth('Signup')}>I don't have an account</p>
-                <button className="buttonEnabled">Login</button>
+                {
+                    buttonDisabled 
+                    ?
+                    <img className="buttonLoading" src="./loading.gif" alt="" />                
+                    :
+                    <button className='buttonEnabled'>Submit</button>
+                }
             </form>
         </div>
     )
