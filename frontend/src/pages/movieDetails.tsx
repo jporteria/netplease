@@ -16,8 +16,6 @@ export default function MovieDetails() {
   // setSelectedMovie(localStorage.getItem('movie') ?? '')
   // const selectedMovie = JSON.parse(s)
 
-    console.log(selectedMovie)
-
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
   });
