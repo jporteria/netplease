@@ -36,6 +36,7 @@ body {
   align-items: center;
   margin-left: 10px;
   cursor: pointer;
+  z-index: 1;
 }
 .header--movies {
   display: flex;
@@ -66,12 +67,14 @@ a.active {
 }
 .searchField:focus {
   outline: solid rgba(0, 0, 0, 0.7) 2000px;
+  z-index: 2;
 }
 .header--user {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 10px;
+  z-index: 1;
 }
 .user--icon {
   margin-right: 20px;
@@ -329,7 +332,7 @@ a.active {
   .preview--box {
     height: 600px;
   }
-  #arrow{
+  #arrow {
     display: none;
   }
 }
@@ -357,7 +360,7 @@ a.active {
     height: 300px;
   }
   .preview--text {
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 }
 @media (max-width: 500px) {
@@ -365,12 +368,12 @@ a.active {
     grid-template-columns: repeat(2, 1fr);
     margin: 0;
   }
-  .movie--selection{
+  .movie--selection {
     margin: 0;
   }
   .preview--box {
     height: 250px;
-    width: 100%;
+    /* width: 100%; */
   }
   .preview--title {
     visibility: hidden;
@@ -381,7 +384,6 @@ a.active {
   }
   .searchField:focus {
     width: 200px;
-    z-index: 1;
   }
 }
 
