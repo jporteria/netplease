@@ -20,8 +20,10 @@
     z-index: 2;
     height: 400px;
     width: 300px;
-    margin-top: 10%;
-    margin-left: 35%;
+    right: 50px;
+    top: 50px;
+    /* margin-top: 10%;
+    margin-left: 35%; */
     position: fixed;
     display: flex;
     align-items: center;
